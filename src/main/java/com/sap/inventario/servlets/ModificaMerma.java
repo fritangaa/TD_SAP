@@ -6,11 +6,9 @@
 package com.sap.inventario.servlets;
 
 import com.sap.conexion.Conexion;
-import com.sap.inventario.clases.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author montse
+ * @author claudia
  */
-@WebServlet(name = "AgregarEntrada", urlPatterns = {"/AgregarEntrada"})
-public class AgregarEntrada extends HttpServlet {
+@WebServlet(name = "ModificarMerma", urlPatterns = {"/ModificarMerma"})
+public class ModificaMerma extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,34 +36,24 @@ public class AgregarEntrada extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        Conexion c = new Conexion();
-        String eclave = request.getParameter("clave");
-        String eexistencia = request.getParameter("existencia");
-        String ecostounitario = request.getParameter("costounitario");
-        String eiva = request.getParameter("iva");
-        String ecostototal = request.getParameter("costov");
-        String efecha = request.getParameter("fecha");
-        int cant=Integer.parseInt(eexistencia);
-        Consultas con=new Consultas();
-        c.actualizar("existencia=existencia+"+cant+",costounitario="+ecostounitario+",iva="+eiva+",costo="+ecostototal+",fecha='"+efecha+"'"
-                , "producto"
-                , "clave='"+eclave+"' and operacion='entrada'");
-//        c.insertar("clave,nombre,existencia,costounitario, iva,costo,monto_total, fecha,operacion","producto",
-//                "'"+eclave+"',"
-//                       + "'"+enombre+"',"
-//                       + ""+eexistencia+","
-//                       + ""+ecostounitario+","
-//                       + ""+eiva+","
-//                       + ""+ecostototal+","
-//                       + ""+emontototal+","
-//                       + "'"+efecha+"','entrada'"
-//                       );
         
-         response.sendRedirect("Inventario/InventarioAgregarEntrada.jsp");
-                   
+        Conexion c=new Conexion();
+        String mermanterior=request.getParameter("mermaant");
+        String merma=request.getParameter("merma");
+        String producto = request.getParameter("producto");
+        String cantidad = request.getParameter("cantidad");
+        String descripcion = request.getParameter("descripcion");
+        String fecha= request.getParameter("fecha");
+        String tipo= request.getParameter("mermatipo");
+        String campos="clave_merma='"+merma+"',cantidad="+cantidad+",descripcion='"+descripcion+"',fecha='"+fecha+"',tipo_merma='"+tipo+"'";
+        c.actualizar(campos, "merma", "clave_merma='"+mermanterior+"'");
+       // String campop="producto=(select id from producto where clave='"+producto+"')";
+    //c.actualizar(camposa, "producto", referencia);
 //        
+         response.sendRedirect("Inventario/InventarioProductoModificar.jsp");
     }
 
+   
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -81,9 +69,9 @@ public class AgregarEntrada extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AgregarEntrada.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificaMerma.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AgregarEntrada.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificaMerma.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

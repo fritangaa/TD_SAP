@@ -60,18 +60,21 @@
     <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
         <div class="card" text-center>
             <div class="card-body">
+                 <form  action="../ModificaMerma" method="post">
                 <h3 class="card-title" >Modificar Producto en Merma</h3><br><br>
                 <!--INICIO CUESTIONARIO-->
-                <label class="card-text">Ingrese el id de merma:</label><br>
-                <input type="text" id="mip" name="mim" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese el id del producto:</p>
-                <input type="text" id="mipr" name="mpr" class="form-control form-control-sm" />               
+                <label class="card-text">Ingrese la clave anterior de merma:</label><br>
+                <input type="text" id="mermaant" name="mermaant" class="form-control form-control-sm" />
+                <label class="card-text">Ingrese la clave de merma:</label><br>
+                <input type="text" id="merma" name="merma" class="form-control form-control-sm" />
+                <p class="card-text">Ingrese la clave del producto:</p>
+                <input type="text" id="producto" name="producto" class="form-control form-control-sm" />               
                 <label class="card-text">Ingrese la cantidad:</label><br>
-                <input type="text" id="mc" name="mc" class="form-control form-control-sm" />
+                <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese la descripcion</p>
-                <input type="text" id="md" name="md" class="form-control form-control-sm" />
+                <input type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese la fecha</p>
-                <input type="text" id="mf" name="mf" class="form-control form-control-sm" />
+                <input type="date" id="fecha" name="fecha" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese tipo de merma</p>
                 <select id="mermatipo" name="mermatipo" class="form-control">
                                     <option value="x">Seleccione...</option>
@@ -79,6 +82,7 @@
                                     <option value="anormal">Anormal</option>
                                 </select>><br><br>
                 <input id="boamerma" type="submit" value="Guardar" class="btn btn-success"/>
+                 </form>
             </div>
         </div>
     </div>

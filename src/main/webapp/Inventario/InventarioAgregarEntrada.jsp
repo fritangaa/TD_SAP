@@ -69,8 +69,6 @@
                 <!--INICIO CUESTIONARIO-->
                 <label class="card-text">Ingrese clave de producto:</label><br>
                 <input type="text" id="clave" name="clave" class="form-control form-control-sm" />
-                <label class="card-text">Ingrese nombre de producto:</label><br>
-                <input type="text" id="nombre" name="nombre" class="form-control form-control-sm" />
                 <label class="card-text">Ingrese la cantidad </label>
                 <input type="number" id="existencia" name="existencia" step="0.01" class="form-control form-control-sm" />
                 <label class="card-text">Ingrese el costo unitario:</label>

@@ -64,7 +64,7 @@
         <div class="card" text-center>
             <div class="card-body">
                 
-                <form  action="../AgregarSalidas" method="post">
+                <form  action="../AgregarEntrada" method="post">
                 <h3 class="card-title" >Ingresar salida de producto </h3><br><br>
                 <!--INICIO CUESTIONARIO-->
                 <label for="clave">Ingrese la clave de producto:</label><br>

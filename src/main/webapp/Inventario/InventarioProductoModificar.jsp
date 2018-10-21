@@ -85,12 +85,6 @@
                 <input type="number" id="costo" name="costo" class="form-control form-control-sm" required="required"/>
                 <p class="card-text">Ingrese la fecha</p>
                 <input type="date" id="fecha" name="fecha" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese la operacion</p>
-                <select id="operacion" name="operacion" class="form-control">
-                                    <option value="x">Seleccione...</option>
-                                    <option value="entrada">Entrada</option>
-                                    <option value="salida">Salida</option>
-                                </select>
                 <input id="boamerma" type="submit" value="Guardar" class="btn btn-success"/>
                         </form>
             </div>

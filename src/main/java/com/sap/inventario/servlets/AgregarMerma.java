@@ -51,19 +51,19 @@ public class AgregarMerma extends HttpServlet {
         String mdescripcion = request.getParameter("descripcion");
         String mfecha = request.getParameter("fecha");
         String mtipo = request.getParameter("mermatipo");
-        //consultar datos para obtener la clave¿
-        String condicion=" clave='"+mclave+"' and operacion='entrada'";
-        //String clave=(String) l.get(0);
-        int id=0;
-        Clave cl=new Clave();
         //campos de la base de datos merma
-        String campos="clave_merma,producto,cantidad,descripcion,fecha,tipo_merma";
+        String campos="clave_merma,cantidad,descripcion,fecha,tipo_merma";
         //guardar las variables obtenidas desde registro jsp
-       String valores="'"+mclave+"',"+cl.Obtenerid(producto)+","+mcantidad+",'"+mdescripcion+"','"+mfecha+"','"+mtipo+"'";
-        //
+       String valores="'"+mclave+"',"+mcantidad+",'"+mdescripcion+"','"+mfecha+"','"+mtipo+"'";
+       //insertar los datos en tabla merma
         c.insertar(campos, "merma", valores);
-        
-
+        //poner la restriccion para agregar el id en la merma insertada
+        String referencia="clave_merma='"+mclave+"'";
+        //
+        c.actualizar("producto=(select id from producto where clave='"+producto+"')", "merma", referencia);
+        c.actualizar("existencia=existencia-"+mcantidad
+                , "producto"
+                , "clave='"+producto+"' and operacion='entrada'");
         response.sendRedirect("Inventario/InventarioMermaAgregar.jsp");
     }
 

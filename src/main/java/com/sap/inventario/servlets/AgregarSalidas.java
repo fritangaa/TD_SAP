@@ -43,51 +43,23 @@ public class AgregarSalidas extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Conexion c = new Conexion();
         String clave = request.getParameter("clave");
-        String nombre = request.getParameter("nombre");
-        String tipo = request.getParameter("tipo");
-        String unidad = request.getParameter("unidad");
         String cantidad = request.getParameter("cantidad");
-        String costounitario = request.getParameter("costo");
-        String iva = request.getParameter("iva");
         String fecha= request.getParameter("fecha");
-        String costov=request.getParameter("costov");
-        double vcosto=Double.parseDouble(costounitario);
-        double viva=Double.parseDouble(iva);
-        double monto=(vcosto*viva)+vcosto;
-//        String verificarClave;
-//         Connection conn;
-//        Class.forName("org.postgresql.Driver");
-//         Properties connProp = new Properties();
-//        connProp.put("user", "postgres");
-//        connProp.put("password", "root");
-//        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
-//        Statement stmt;        
-//        stmt = conn.createStatement();
-//        ResultSet rs = stmt.executeQuery("select clave from producto where operacion='salida' and clave='"+clave+"'");
-//        verificarClave=rs.getString("clave");
-//        if( verificarClave.equals(clave)==false){
-             c.insertar("clave,nombre,tipo,unidad,costounitario,iva,fecha,costo,monto_total,existencia,operacion", "producto",
-                    "'"+clave+"',"
-                       + "'"+nombre+"'"
-                            + ",'"+tipo+"',"
-                            + "'"+unidad+"',"
-                            + ""+costounitario+","
-                            + ""+iva+","
-                            + "'"+fecha+"',"
-                            + ""+costov+","
-                            + ""+monto+","
-                            + ""+cantidad+""
-                            + ",'salida'");
-    
-           
-//        }else{
-//         c.actualizar("fecha='"+fecha+"',existencia=existencia-"+cantidad
+        String campos="clave,existencia,fecha,operacion";
+        String valores="'"+clave+"',"+cantidad+",'"+fecha+"','salida'";
+        c.insertar(campos, "producto", valores);
+        String camposa="producto set nombre=(select nombre from producto where operacion='entrada' and clave='CU1'),"
+                + "tipo=(select tipo from producto where operacion='entrada' and clave='CU1'),"
+                + "unidad=(select unidad from producto where operacion='entrada' and clave='CU1'),";
+        /*update producto set nombre=(select nombre from producto where operacion='entrada' and clave='CU1'),
+SAP-# 
+SAP-# 
+SAP-# costounitario=(select costounitario from producto where operacion='entrada' and clave='CU1');*/
+        String referencia="";
+    c.actualizar(camposa, "producto", referencia);
+//         c.actualizar("existencia=existencia-"+cantidad
 //                , "producto"
-//                , "clave='"+clave+"' and operacion='salida'");
-//           }
-         c.actualizar("existencia=existencia-"+cantidad
-                , "producto"
-                , "clave='"+clave+"' and operacion='entrada'");
+//                , "clave='"+clave+"' and operacion='entrada'");
 //        
          response.sendRedirect("Inventario/InventarioIngresarSalida.jsp");
     }

@@ -57,6 +57,6 @@ public class Clave {
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("select id from Producto where clave='"+clavep+"' and operacion='entrada'");
         int id=rs.getInt("id");
-    return 0;
+    return id;
     }
 }

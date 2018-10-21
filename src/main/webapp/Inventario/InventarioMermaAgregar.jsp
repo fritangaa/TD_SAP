@@ -64,7 +64,7 @@
                 <!--INICIO CUESTIONARIO-->
                 <label class="card-text">Ingrese la clave de merma:</label><br>
                 <input type="text" id="clavem" name="clavem" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese el id del producto:</p>
+                <p class="card-text">Ingrese la clave del producto:</p>
                 <input type="text" id="producto" name="producto" class="form-control form-control-sm" />
                 <label class="card-text">Ingrese la cantidad:</label><br>
                 <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm" />

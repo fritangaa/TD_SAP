@@ -37,6 +37,7 @@ public class ModificarProducto extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         Conexion c=new Conexion();
+        String claveo=request.getParameter("bclave");;
         String clave = request.getParameter("clave");
         String nombre = request.getParameter("nombre");
         String tipo = request.getParameter("tipo");
@@ -49,8 +50,9 @@ public class ModificarProducto extends HttpServlet {
         double vcosto=Double.parseDouble(costounitario);
         double viva=Double.parseDouble(iva);
         double monto=(vcosto*viva)+vcosto;
-         c.insertar("clave,nombre,tipo,unidad,cantidad,costounitario,iva,fecha,costo,monto_total", "producto",
-                    "'"+clave+"','"+nombre+"','"+tipo+"','"+unidad+"',"+cantidad+","+costounitario+","+iva+",'"+fecha+"',"+costov+","+monto);
+        String campos="clave='"+clave+"',nombre='"+nombre+"',tipo='"+tipo+"',unidad='"+unidad+"',existencia="+cantidad+
+                ",costounitario="+costounitario+",iva="+iva+",fecha='"+fecha+"',monto_total="+monto;
+        c.actualizar(campos, "producto", "clave='"+claveo+"' and operacion='entrada'");
          response.sendRedirect("Inventario/InventarioProductoModificar.jsp");
     }
 
