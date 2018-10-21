@@ -120,26 +120,28 @@ public class Consultas {
         return l;
     
     }
-//    public static LinkedList consultaSalidaOp() throws SQLException,ClassNotFoundException{
+//    public static LinkedList Clave() throws SQLException,ClassNotFoundException{
 //       
-//       Connection conn;
+//     Connection conn;
 //        Class.forName("org.postgresql.Driver");
-//        LinkedList <VarSal> l=new LinkedList<VarSal>();
+//         LinkedList <Clave> l=new LinkedList<Clave>();
 //        Properties connProp = new Properties();
 //        connProp.put("user", "postgres");
 //        connProp.put("password", "root");
 //        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
 //        Statement stmt;        
 //        stmt = conn.createStatement();
-//        PedidoInventario pi=new PedidoInventario();
-//        ResultSet res = stmt.executeQuery("select o.cantidad,p.existencia from orden_de_venta as o, producto as p where p.id=(select idproducto from pedido where idpedido="+pi.getIdpedido()+") and o.idpedido="+pi.getIdpedido());
-////        while (rs.next()) {
-//            
-//        VarSal p=new VarSal();
-//            p.setCantidad(res.getInt("o.cantidad"));
-//            p.setExistencia(res.getInt("p.existencia"));
+//         ResultSet rs = stmt.executeQuery("select id from Producto where clave='CU5' and operacion='entrada'");
+//        while (rs.next()) {
+//            Merma p=new Merma();
+//            p.setClavemerma(rs.getString("clave_merma"));
+//            p.setClavep(rs.getString("producto"));
+//            p.setCantidad(rs.getInt("cantidad"));
+//            p.setDescripcion(rs.getString("descripcion"));
+//            p.setFecha(rs.getString("fecha"));
+//            p.setTipoMerma(rs.getString("tipo_merma"));
 //            l.add(p);
-//        
+//        }
 //        conn.close();
 //        return l;
 //    }

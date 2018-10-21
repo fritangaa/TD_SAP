@@ -6,9 +6,16 @@
 package com.sap.inventario.servlets;
 
 import com.sap.conexion.Conexion;
+import com.sap.inventario.clases.Clave;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -37,16 +44,25 @@ public class AgregarMerma extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
        Conexion c = new Conexion();
+       ///obtener parametros
         String mclave = request.getParameter("clavem");
-        String mproducto = request.getParameter("producto");
+        String producto = request.getParameter("producto");
         String mcantidad = request.getParameter("cantidad");
-    String mdescripcion = request.getParameter("descripcion");
+        String mdescripcion = request.getParameter("descripcion");
         String mfecha = request.getParameter("fecha");
         String mtipo = request.getParameter("mermatipo");
-         c.insertar( 
-                "clave_merma,produto,cantidad,descripcion,fecha,tipo_merma","merma",
-                "'"+mclave+"','" + mproducto+"'," + mcantidad+",'" + mdescripcion+"','" + mfecha+"','" + mtipo + "'"
-        );
+        //consultar datos para obtener la clave¿
+        String condicion=" clave='"+mclave+"' and operacion='entrada'";
+        //String clave=(String) l.get(0);
+        int id=0;
+        Clave cl=new Clave();
+        //campos de la base de datos merma
+        String campos="clave_merma,producto,cantidad,descripcion,fecha,tipo_merma";
+        //guardar las variables obtenidas desde registro jsp
+       String valores="'"+mclave+"',"+cl.Obtenerid(producto)+","+mcantidad+",'"+mdescripcion+"','"+mfecha+"','"+mtipo+"'";
+        //
+        c.insertar(campos, "merma", valores);
+        
 
         response.sendRedirect("Inventario/InventarioMermaAgregar.jsp");
     }

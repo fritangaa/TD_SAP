@@ -20,6 +20,9 @@
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+
+    <!--Validacion de campos-->
+    <script src="../Recursos/js/Inventario.js" type="text/javascript"></script>
 </head>
 <body>
     <header class="sticky-top">
@@ -66,21 +69,20 @@
             <div class="card-body">
                 <h4>Consulta</h4>
                  <div class="col-xs-offset-1 col-md-offset-1 central">
-                  
+                  <!---BARRA DE LA DERECHA---------------------------------------------------------->
                 </div>
                     <div class="col-xs-10 col-md-10 central">
-                    <form action="../BuscarPorIDProducto" method="post">
                         <h5>Buscar ID de producto</h5>
                         <input name="clave" type="text" placeholder="ID producto"/><br><br> 
-                        </form>
-                <input id="buscar" type="submit" value="Buscar" class="btn btn-success"/><br><br>
+                <input id="buscar" type="button" value="Buscar" class="btn btn-success"/><br><br>
                             <hr>
                      <a href="InventarioProductoAgregar.jsp"><label>Agregar producto</label></a>
                      <a href="InventarioProductoModificar.jsp"><label>Modificar producto</label></a>
                     <h4>Reporte</h4>
                     
                 <input id="generar" type="submit" value="Generar" class="btn btn-success"/><br><br>
-                     
+                <!--FIN DE BARRA-------------------------------------------------------------------->
+            <!----TABLA INICIO------------------------------------------------------------------------->        
                 
               </div>
             </div>

@@ -88,7 +88,6 @@
                 <p class="card-text">Ingrese la operacion</p>
                 <select id="operacion" name="operacion" class="form-control">
                                     <option value="x">Seleccione...</option>
-                                    <option value="existente ">Existente</option>
                                     <option value="entrada">Entrada</option>
                                     <option value="salida">Salida</option>
                                 </select>

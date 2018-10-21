@@ -50,7 +50,7 @@ public class AgregarEntrada extends HttpServlet {
         Consultas con=new Consultas();
         c.actualizar("nombre= '"+enombre+"',existencia=existencia+"+cant+",costounitario="+ecostounitario+",iva="+eiva+",costo="+ecostototal+",fecha='"+efecha+"'"
                 , "producto"
-                , "clave='"+eclave+"'");
+                , "clave='"+eclave+"' and operacion='entrada'");
 //        c.insertar("clave,nombre,existencia,costounitario, iva,costo,monto_total, fecha,operacion","producto",
 //                "'"+eclave+"',"
 //                       + "'"+enombre+"',"

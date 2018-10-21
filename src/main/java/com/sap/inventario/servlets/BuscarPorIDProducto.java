@@ -41,12 +41,13 @@ public class BuscarPorIDProducto extends HttpServlet {
         Conexion c=new Conexion();
         // variables para insertar en la base de datos
         String clave = request.getParameter("clave");
+        System.out.println("cadena:"+clave);
         //campos de la tabla producto que vamos a mostrar
         String campos=" clave,nombre,tipo,unidad,existencia,costounitario,costo,iva";
         //condicion para que nos muestre esos datos en especifico
         String condicion=" clave='"+clave+"' and operacion='entrada'";
         
-        ArrayList l=c.consultaVariosCamposUnaClave2(condicion, campos, "producto", 5);
+        ArrayList l=c.consultaVariosCamposUnaClave2(condicion, campos, "producto", 8);
        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */                  
             out.println("<h1 class='text-center'> Consulta Realizada</h1>");         
