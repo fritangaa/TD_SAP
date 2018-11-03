@@ -9,15 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modificar Producto</title>
-    <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>Modificar Merma</title>
+        <!------BOOSTRAP------->
+        <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
-</head>
-<body><header class="sticky-top">
+    </head>
+    <body>
+        <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
             <a href="Inventario.jsp" class="navbar-brand text-white">Inventario</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#inv_navbar" aria-controls="inv_navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,44 +56,41 @@
         </nav>
     </header>      
     <br/><br/>
-    <!--Panel---------------------------------------------------------------------------------->
-    <div class="row">
     <!--Panel-->
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
+    <div class="col-sm-5 central" style="width: auto; margin: auto auto;" >
         <div class="card" text-center>
             <div class="card-body">
-                
-                        <form  action="../ModificarProducto" method="post">
-                <h3 class="card-title" >Modificar Producto </h3><br><br>
+                 <form  action="../ModificaMerma" method="post">
+                <h3 class="card-title" >Modificar Producto en Merma</h3><br><br>
                 <!--INICIO CUESTIONARIO-->
-                <label class="card-text">Ingrese clave de producto:</label><br>
-                <input type="text" id="bclave" name="bclave" class="form-control form-control-sm" />
-                <input id="buscarclave" type="submit" value="Buscar" class="btn btn-success"/><br><br>
-                <label class="card-text">Ingrese clave de producto:</label><br>
-                <input type="text" id="clave" name="clave" class="form-control form-control-sm" required="required" />
-                <label class="card-text">Ingrese el nombre:</label><br>
-                <input type="text" id="nombre" name="nombre" class="form-control form-control-sm" required="required" />
-                <p class="card-text">Ingrese tipo de producto</p>
-                <input type="text" id="tipo" name="tipo" class="form-control form-control-sm" />
-                <label class="card-text">Ingrese la unidad:</label><br>
-                <input type="text" id="unidad" name="unidad" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese la cantidad</p>
-                <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm" required="required"/>
-                <p class="card-text">Ingrese el costo unitario:</p>
-                <input type="number" id="costounitario" name="costounitario" class="form-control form-control-sm" required="required"/>
-                <p class="card-text">Ingrese el iva</p>
-                <input type="number" id="iva" name="iva" step="0.01" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese el costo venta:</p>
-                <input type="number" id="costo" name="costo" class="form-control form-control-sm" required="required"/>
+                <label class="card-text">Ingrese la clave anterior de merma:</label><br>
+                <input type="text" id="mermaant" name="mermaant" class="form-control form-control-sm" />
+                <label class="card-text">Ingrese la clave de merma:</label><br>
+                <input type="text" id="merma" name="merma" class="form-control form-control-sm" />
+                <p class="card-text">Ingrese la clave del producto:</p>
+                <input type="text" id="producto" name="producto" class="form-control form-control-sm" />               
+                <label class="card-text">Ingrese la cantidad:</label><br>
+                <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm" />
+                <p class="card-text">Ingrese el motivo de la merma del producto</p>
+                <input type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese la fecha</p>
                 <input type="date" id="fecha" name="fecha" class="form-control form-control-sm" />
+                <p class="card-text">Ingrese tipo de merma</p>
+                <select id="tipo" name="tipo" class="form-control">
+                                    <option value="x">Seleccione...</option>
+                                    <option value="Vencimiento">Vencimiento</option>
+                                    <option value="Hurtos detectados">Hurtos detectados</option>
+                                    <option value="Errores en sistema">Errores en sistema</option>
+                                    <option value="fraudes">fraudes</option>
+                                </select><br><br>
                 <input id="boamerma" type="submit" value="Guardar" class="btn btn-success"/>
-                        </form>
+                 </form>
             </div>
         </div>
     </div>
     <!--/.Panel-->
     
 </div>
-</body>
+    
+    </body>
 </html>

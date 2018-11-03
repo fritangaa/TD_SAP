@@ -57,7 +57,7 @@
     </header>      
     <br/><br/>
     <!--Panel-->
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
+    <div class="col-sm-5 central" style="width: auto; margin: auto auto;" >
         <div class="card" text-center>
             <div class="card-body">
                  <form  action="../ModificaMerma" method="post">
@@ -71,16 +71,18 @@
                 <input type="text" id="producto" name="producto" class="form-control form-control-sm" />               
                 <label class="card-text">Ingrese la cantidad:</label><br>
                 <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese la descripcion</p>
+                <p class="card-text">Ingrese el motivo de la merma del producto</p>
                 <input type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese la fecha</p>
                 <input type="date" id="fecha" name="fecha" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese tipo de merma</p>
-                <select id="mermatipo" name="mermatipo" class="form-control">
+                <select id="tipo" name="tipo" class="form-control">
                                     <option value="x">Seleccione...</option>
-                                    <option value="normal">Normal</option>
-                                    <option value="anormal">Anormal</option>
-                                </select>><br><br>
+                                    <option value="Vencimiento">Vencimiento</option>
+                                    <option value="Hurtos detectados">Hurtos detectados</option>
+                                    <option value="Errores en sistema">Errores en sistema</option>
+                                    <option value="fraudes">fraudes</option>
+                                </select><br><br>
                 <input id="boamerma" type="submit" value="Guardar" class="btn btn-success"/>
                  </form>
             </div>

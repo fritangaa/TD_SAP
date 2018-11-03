@@ -109,12 +109,7 @@ function datosCurp(){
             case "ZS":
                 nac = "Zacatecas";
                 break;
-            case "NE":
-                nac = "Extranjera";
-                break;
             default:
-                alert("El CURP contiene datos erroneos");
-                document.getElementById("curpContratarEmp").value = "";
                 break;
         }
         document.getElementById("lugarContratarEmp").value = nac.toString();
@@ -231,36 +226,14 @@ function datosCurpM(){
             case "ZS":
                 nac = "Zacatecas";
                 break;
-            case "NE":
-                nac = "Extranjera";
-                break;
             default:
-                alert("El CURP contiene datos erroneos");
-                document.getElementById("curpModificarEmp").value = "";
                 break;
         }
         document.getElementById("lugarModificarEmp").value = nac.toString();
     }else{
         if(!(cadena.toString().toLowerCase() === "no aplica")){
             alert("El curp debe tener 18 caracteres");
-            document.getElementById("curpModificarEmp").value = "";
         }
-    }
-}
-
-function validaRFC(){
-    var rfc = document.getElementById("rfcContratarEmp").value.toString();
-    if(rfc.length !== 13){
-        alert("El RFC debe tener 13 digitos");
-        document.getElementById("rfcContratarEmp").value = "";
-    }
-}
-
-function validaRFCA(){
-    var rfc = document.getElementById("rfcActualizarEmp").value.toString();
-    if(rfc.length !== 13){
-        alert("El RFC debe tener 13 digitos");
-        document.getElementById("rfcActualizarEmp").value = "";
     }
 }
 
@@ -269,32 +242,20 @@ function valida(){
     var nombre = document.getElementById("nombreContratarEmp").value.toString();
     var paterno = document.getElementById("paternoContratarEmp").value.toString();
     var materno = document.getElementById("maternoContratarEmp").value.toString();
-    var rfc = document.getElementById("rfcContratarEmp").value.toString();
     var cuenta = document.getElementById("cuentaContratarEmp").value.toString();
-    var sueldo = document.getElementById("sueldoContratarEmp").value;
     var numero = /[0-9]/;
-    var especial = /[|°!"#$%&/()=?¡¿'+*{}[]^\.:,;<>_]/;
+    var patron = /([A-Z]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM](AS|BC|BS|CC|CL|CM|CS|CH|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS)[A-Z]{3}[0-9A-Z]\d)/;
     if(numero.test(nombre) || numero.test(paterno) || numero.test(materno)){
         alert("Datos no validos");
+        return false;
+    }
+    if(patron.test(curp) === false){
+        alert("CURP no valido");
         return false;
     }
     if(cuenta.length !== 16){
         alert("La cuenta bancaria debe tener 16 digitos");
         return false;
-    }
-    if((sueldo <= 0) || (sueldo < 88.36)){
-        alert("El sueldo debe ser $88.36 o mayor");
-        return false;
-    }
-    if(especial.test(nombre) || especial.test(paterno) || especial.test(materno) || especial.test(curp) || especial.test(rfc)){
-        alert("No se pueden incluir caracteres especiales");
-        return false;
-    }
-    if(rfc.toLowerCase() !== "no aplica" && curp.toLowerCase() !== "no aplica"){
-        if(rfc.substring(0,10) !== curp.substring(0,10)){
-            alert("Los primeros 10 caracteres del RFC \n no coinciden con los primeros 10 caracteres del CURP");
-            return false;
-        }
     }
     return true;
 }
@@ -304,32 +265,20 @@ function validaM(){
     var nombre = document.getElementById("nombreModificarEmp").value.toString();
     var paterno = document.getElementById("paternoModificarEmp").value.toString();
     var materno = document.getElementById("maternoModificarEmp").value.toString();
-    var rfc = document.getElementById("rfcModificarEmp").value.toString();
     var cuenta = document.getElementById("cuentaModificarEmp").value.toString();
-    var sueldo = document.getElementById("sueldoModificarEmp").value;
     var numero = /[0-9]/;
-    var especial = /[|°!"#$%&/()=?¡¿'+*{}[]^\.:,;<>_]/;
+    var patron = /([A-Z]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM](AS|BC|BS|CC|CL|CM|CS|CH|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS)[A-Z]{3}[0-9A-Z]\d)/;
     if(numero.test(nombre) || numero.test(paterno) || numero.test(materno)){
         alert("Datos no validos");
+        return false;
+    }
+    if(patron.test(curp) === false){
+        alert("CURP no valido");
         return false;
     }
     if(cuenta.length !== 16){
         alert("La cuenta bancaria debe tener 16 digitos");
         return false;
-    }
-    if((sueldo <= 0) || (sueldo < 88.36)){
-        alert("La cuenta bancaria debe tener 16 digitos");
-        return false;
-    }
-    if(especial.test(nombre) || especial.test(paterno) || especial.test(materno) || especial.test(curp) || especial.test(rfc)){
-        alert("No se pueden incluir caracteres especiales");
-        return false;
-    }
-    if(rfc.toLowerCase() !== "no aplica" && curp.toLowerCase() !== "no aplica"){
-        if(rfc.substring(0,10) !== curp.substring(0,10)){
-            alert("Los primeros 10 caracteres del RFC \n no coinciden con los primeros 10 caracteres del CURP");
-            return false;
-        }
     }
     return true;
 }

@@ -66,39 +66,45 @@
                             <div class="form-group">
                                 <label for="clave">Ingrese la clave de producto:</label><br>
                                 <input type="text" id="clave" name="clave" class="form-control" required="required" />
-                            </div>                                                        
-                            <div class="form-group">
+                            
                                 <label for="nombre">Ingrese el nombre del producto:</label><br>
                                 <input type="text" id="nombre" name="nombre" class="form-control" required="required" />    
-                            </div>                                                        
-                            <div class="form-group">
+                                
                                 <label for="tipo">Ingrese tipo de producto</label>
-                                 <input type="text" id="tipo" name="tipo" class="form-control" required="required"/>                                    
-                            </div>
-                            <div class="form-group">
+                                 <select id="tipo" name="tipo" class="form-control">
+                                    <option value="x">Seleccione...</option>
+                                    <option value="Ropa">Ropa</option>
+                                    <option value="Accesorios">Accesorios</option>
+                                    <option value="Herramienta">Herramienta</option>
+                                    <option value="Hogar">Hogar</option>
+                                    <option value="Joyeria">Joyeria</option>
+                                    <option value="Electronicos">Electronicos</option>
+                                    <option value="Calzado">Calzado</option>
+                                </select>
+                                
                                 <label for="unidad">Ingrese la unidad del producto:</label><br>
-                                 <input type="text" id="unidad" name="unidad" class="form-control" required="required"/>
-                                                                                  
-                            <div class="form-group">
-                <label for="cantidad">Ingrese la cantidad del producto</label>
-                <input type="number" id="cantidad" name="cantidad" class="form-control " required="required" />                                   
-                            </div>    
-                                 <div class="form-group">
+                                <select id="unidad" name="unidad" class="form-control">
+                                    <option value="x">Seleccione...</option>
+                                    <option value="pieza">pieza</option>
+                                    <option value="paquete">paquete</option>
+                                    <option value="caja">caja</option>
+                                    <option value="elemento">elemento</option>
+                                    <option value="kit">kit</option>
+                                    <option value="equipo">equipo</option>
+                                    <option value="par">par</option>
+                                    <option value="lote">lote</option>
+                                 </select>
                 <label for="costo">Ingrese el costo del producto:</label>
-                <input type="number" id="costo" name="costo" class="form-control " required="required" />  
+                <input type="number" id="costo" name="costo" step="0.00" class="form-control " required="required" />  
                 
                 <label for="costo">Ingrese el costo de venta:</label>
-                <input type="number" id="costov" name="costov" class="form-control " required="required" /> 
-                            </div>  
-                                 <div class="form-group">
+                <input type="number" id="costov" name="costov" step="0.00" class="form-control " required="required" /> 
+                
                 <label for="iva">Ingrese el iva del producto</label>
-                <input type="text" id="iva" name="iva" step="0.01" class="form-control" required="required" />       
-                                 </div>
-                                 <div class="form-group">
-                                      <label for="fecha">Fecha :</label>
-                             <input id="fecha" name="fecha" class="form-control " type="date" required="required"/> </div> 
-                            </div>  
-                            <div class="form-group">
+                <input type="text" id="iva" name="iva" step="0.00" class="form-control" required="required" />       
+                
+                <label for="cantidad">Ingrese la cantidad del producto</label>
+                <input type="number" id="cantidad" name="cantidad" class="form-control " required="required" />                                   
                                 <input type="reset" value="Cancelar" class="btn btn-default"/>                                                        
                                 <input type="submit" value="Agregar" class="btn btn-default"/>
                             </div>                            

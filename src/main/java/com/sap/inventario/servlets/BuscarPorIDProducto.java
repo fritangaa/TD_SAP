@@ -40,12 +40,12 @@ public class BuscarPorIDProducto extends HttpServlet {
        //obtener conexion de clase conexion
         Conexion c=new Conexion();
         // variables para insertar en la base de datos
-        String clave = request.getParameter("clave");
+        String clave = request.getParameter("bclave");
         System.out.println("cadena:"+clave);
         //campos de la tabla producto que vamos a mostrar
-        String campos=" clave,nombre,tipo,unidad,existencia,costounitario,costo,iva";
+        String campos=" clave,nombre,tipo,unidad,costounitario,precio_venta,iva,cantidad,monto_total";
         //condicion para que nos muestre esos datos en especifico
-        String condicion=" clave='"+clave+"' and operacion='entrada'";
+        String condicion=" clave='"+clave+"'";
         
         ArrayList l=c.consultaVariosCamposUnaClave2(condicion, campos, "producto", 8);
        try (PrintWriter out = response.getWriter()) {

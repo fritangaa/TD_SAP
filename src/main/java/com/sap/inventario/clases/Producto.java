@@ -21,6 +21,15 @@ public class Producto {
     String fecha;
     String operacion;
     double montototal;
+    int cantidaddoble;
+
+    public int getCantidaddoble() {
+        return cantidaddoble;
+    }
+
+    public void setCantidaddoble(int cantidaddoble) {
+        this.cantidaddoble = cantidaddoble;
+    }
 
     public String getClave() {
         return clave;

@@ -27,18 +27,17 @@ public class Consultas {
         conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
         Statement stmt;        
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from producto where operacion='entrada'");
+        ResultSet rs = stmt.executeQuery("select * from producto");
         while (rs.next()) {
             Producto p=new Producto();
             p.setClave(rs.getString("clave"));
             p.setNombre(rs.getString("nombre"));
             p.setTipo(rs.getString("tipo"));
             p.setUnidad(rs.getString("unidad"));
-            p.setCantidad(rs.getInt("existencia"));
             p.setCostounitario(rs.getDouble("costounitario"));
-            p.setCostototal(rs.getDouble("costo"));
+            p.setCostototal(rs.getDouble("precio_venta"));
             p.setIva(rs.getDouble("iva"));
-            p.setFecha(rs.getString("fecha"));
+            p.setCantidad(rs.getInt("cantidad"));
             p.setMontototal(rs.getDouble("monto_total"));
             l.add(p);
         }
@@ -55,15 +54,14 @@ public class Consultas {
         conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
         Statement stmt;        
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from producto where operacion='salida'");
+        ResultSet rs = stmt.executeQuery("select p.clave,p.nombre,d.cantidad,d.precio_unitario,d.precio_total from producto p, detalle_ordendeventa d where d.idproducto=p.id");
         while (rs.next()) {
-            Producto p=new Producto();
+           Producto p=new Producto();
             p.setClave(rs.getString("clave"));
-           p.setCostounitario(rs.getDouble("costounitario"));
-            p.setCostototal(rs.getDouble("costo"));
-            p.setIva(rs.getDouble("iva"));
-            p.setFecha(rs.getString("fecha"));
-            p.setMontototal(rs.getDouble("monto_total"));
+            p.setNombre(rs.getString("nombre"));
+            p.setCantidad(rs.getInt("cantidad"));
+            p.setCostounitario(rs.getDouble("precio_unitario"));
+            p.setCostototal(rs.getDouble("precio_total"));
             l.add(p);
         }
         conn.close();
@@ -79,18 +77,18 @@ public class Consultas {
         conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
         Statement stmt;        
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from producto where operacion='entrada'");
+        ResultSet rs = stmt.executeQuery("select p.clave,p.nombre,d.cantidad,p.costounitario,p.iva,p.precio_venta"
+                + " from producto p,detallecompra d where p.id=d.id_producto;");
+       
         while (rs.next()) {
             Producto p=new Producto();
             p.setClave(rs.getString("clave"));
             p.setNombre(rs.getString("nombre"));
-            p.setCantidad(rs.getInt("existencia"));
+            p.setCantidad(rs.getInt("cantidad"));
             p.setCostounitario(rs.getDouble("costounitario"));
-            p.setCostototal(rs.getDouble("costo"));
+        p.setCostototal(rs.getDouble("precio_venta"));
             p.setIva(rs.getDouble("iva"));
-            p.setFecha(rs.getString("fecha"));
-            p.setMontototal(rs.getDouble("monto_total"));
-            l.add(p);
+          l.add(p);
         }
         conn.close();
         return l;
@@ -109,11 +107,11 @@ public class Consultas {
         while (rs.next()) {
             Merma p=new Merma();
             p.setClavemerma(rs.getString("clave_merma"));
-            p.setClavep(rs.getString("producto"));
             p.setCantidad(rs.getInt("cantidad"));
-            p.setDescripcion(rs.getString("descripcion"));
+            p.setDescripcion(rs.getString("motivo"));
             p.setFecha(rs.getString("fecha"));
             p.setTipoMerma(rs.getString("tipo_merma"));
+            p.setClavep(rs.getString("producto"));
             l.add(p);
         }
         conn.close();

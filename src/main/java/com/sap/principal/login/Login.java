@@ -55,6 +55,12 @@ public class Login extends HttpServlet {
                         response.sendRedirect("Contabilidad/Contabilidad.jsp");
                         break;
                     case 4 :
+                        response.sendRedirect("Ventas/Ventas.jsp");
+                        break;
+                    case 5 :
+                        response.sendRedirect("Compras/Compras.jsp");
+                        break;
+                    case 6 :
                         response.sendRedirect("Inventario/Inventario.jsp");
                         break;
                     default:

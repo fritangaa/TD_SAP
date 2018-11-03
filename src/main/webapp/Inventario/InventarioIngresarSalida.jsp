@@ -60,49 +60,20 @@
     <!--Panel---------------------------------------------------------------------------------->
     <div class="row">
     <!--Panel-->
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
+    <div class="col-sm-5 central" style="width: auto; margin: auto auto;" >
         <div class="card" text-center>
             <div class="card-body">
                 
-                <form  action="../AgregarEntrada" method="post">
+                <form  action="../AgregarSalidas" method="post">
                 <h3 class="card-title" >Ingresar salida de producto </h3><br><br>
                 <!--INICIO CUESTIONARIO-->
-                <label for="clave">Ingrese la clave de producto:</label><br>
-                                <input type="text" id="clave" name="clave" class="form-control" required="required" />
-                                                                                   
-                            <div class="form-group">
-                                <label for="nombre">Ingrese el nombre del producto:</label><br>
-                                <input type="text" id="nombre" name="nombre" class="form-control" required="required" />    
-                            </div>                                                        
-                            <div class="form-group">
-                                <label for="tipo">Ingrese tipo de producto</label>
-                                 <input type="text" id="tipo" name="tipo" class="form-control" required="required"/>                                    
-                            </div>
-                            <div class="form-group">
-                                <label for="unidad">Ingrese la unidad del producto:</label><br>
-                                 <input type="text" id="unidad" name="unidad" class="form-control" required="required"/>
-                                                                                  
-                            <div class="form-group">
-                <label for="cantidad">Ingrese la cantidad del producto</label>
-                <input type="number" id="cantidad" name="cantidad" class="form-control " required="required" />                                   
-                            </div>    
-                                 <div class="form-group">
-                <label for="costo">Ingrese el costo del producto:</label>
-                <input type="number" id="costo" name="costo" class="form-control " required="required" />  
-                
-                <label for="costo">Ingrese el costo de venta:</label>
-                <input type="number" id="costov" name="costov" class="form-control " required="required" /> 
-                            </div>  
-                                 <div class="form-group">
-                <label for="iva">Ingrese el iva del producto</label>
-                <input type="text" id="iva" name="iva" step="0.01" class="form-control" required="required" />       
-                                 </div>
-                                 <div class="form-group">
-                                      <label for="fecha">Fecha :</label>
-                             <input id="fecha" name="fecha" class="form-control " type="date" required="required"/> </div> 
-                            </div><div class="form-group">
-                                <input type="reset" value="Cancelar" class="btn btn-default"/>                                                        
-                                <input type="submit" value="Agregar" class="btn btn-default"/>
+                <label class="card-text">Ingrese clave de producto:</label><br>
+                <input type="text" id="clave" name="clave" class="form-control form-control-sm" />
+                <label class="card-text">Ingrese la cantidad: </label>
+                <input type="number" id="cantidad" name="cantidad"  class="form-control form-control-sm" /><br>
+                <div>
+                <input id="btn" type="submit" value="Guardar" class="btn btn-success" style=" margin:  auto;"/>
+                <input type="reset" value="Cancelar" class="btn btn-default" style=" margin: auto;"/>                                                        
                             </div> 
                 </form>
             </div>

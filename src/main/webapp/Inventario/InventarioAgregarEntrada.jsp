@@ -60,7 +60,7 @@
     <!--Panel---------------------------------------------------------------------------------->
     <div class="row">
     <!--Panel-->
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
+    <div class="col-sm-5 central" style="width: auto; margin: auto auto;" >
         <div class="card" text-center>
             <div class="card-body">
                 
@@ -69,20 +69,13 @@
                 <!--INICIO CUESTIONARIO-->
                 <label class="card-text">Ingrese clave de producto:</label><br>
                 <input type="text" id="clave" name="clave" class="form-control form-control-sm" />
-                <label class="card-text">Ingrese la cantidad </label>
-                <input type="number" id="existencia" name="existencia" step="0.01" class="form-control form-control-sm" />
-                <label class="card-text">Ingrese el costo unitario:</label>
-                <input type="number" id="costounitario" name="costounitario" class="form-control form-control-sm" required="required"/>
-                <label class="card-text">Ingrese el iva</label>
-                <input type="number" id="iva" step="0.01" name="iva" class="form-control form-control-sm" />
-                <label class="card-text">Ingrese el  costo de venta</label>
-                <input type="number" id="costov"  name="costov" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese la fecha :</p>
-                <input type="date" id="fecha" name="fecha" class="form-control form-control-sm" required="required"/>
-                <input id="boamerma" type="submit" value="Guardar" class="btn btn-success"/>
+                <label class="card-text">Ingrese la cantidad: </label>
+                <input type="number" id="cantidad" name="cantidad"  class="form-control form-control-sm" /><br>
+               <input id="btn" type="submit" value="Guardar" class="btn btn-success" style="width: 330px; margin: 0 auto;"/>
                         </form>
             </div>
         </div>
+    </div>
     </div>
     <!--/.Panel-->
     </body>

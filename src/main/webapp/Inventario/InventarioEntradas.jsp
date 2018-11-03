@@ -102,20 +102,15 @@
         <th>
           Nombre
         </th><th>
-          Cantidad
+          Cantidad comprada
         </th>
       <th>
          Costo unitario
         </th><th>
-          iva
-        </th><th>
           Costo venta
         </th>
-      <th>
-          Monto total
-        </th>
         <th>
-          Fecha
+          iva
         </th>
       </tr>
 
@@ -128,10 +123,8 @@
                            out.println("<td>"+lista.get(i).getNombre()+"</td>");
                            out.println("<td>"+lista.get(i).getCantidad()+"</td>");
                            out.println("<td>"+lista.get(i).getCostounitario()+"</td>");
-                           out.println("<td>"+lista.get(i).getIva()+"</td>");
                            out.println("<td>"+lista.get(i).getCostototal()+"</td>");
-                           out.println("<td>"+lista.get(i).getMontototal()+"</td>");
-                           out.println("<td>"+lista.get(i).getFecha()+"</td>");
+                           out.println("<td>"+lista.get(i).getIva()+"</td>");
                            out.println("</tr>");
                         }
                     %>

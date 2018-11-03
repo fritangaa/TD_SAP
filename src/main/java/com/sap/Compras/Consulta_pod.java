@@ -3,18 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sap.inventario.servlets;
+package com.sap.Compras;
 
-import com.sap.conexion.Conexion;;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -25,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author claudia
+ * @author Marii
  */
-@WebServlet(name = "AgregarMerma", urlPatterns = {"/AgregarMerma"})
-public class AgregarMerma extends HttpServlet {
+@WebServlet(name = "Consulta_pod", urlPatterns = {"/Consulta_pod"})
+public class Consulta_pod extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,25 +36,42 @@ public class AgregarMerma extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-       Conexion c = new Conexion();
-       ///obtener parametros
-        String mclave = request.getParameter("clavem");
-        String producto = request.getParameter("producto");
-        String mcantidad = request.getParameter("cantidad");
-        String mdescripcion = request.getParameter("descripcion");
-        String mfecha = request.getParameter("fecha");
-        String mtipo = request.getParameter("tipo");
-                int cant=Integer.parseInt(mcantidad);
-        //campos de la base de datos merma
-        String campos="clave_merma,cantidad,motivo,fecha,tipo_merma,producto";
-        //guardar las variables obtenidas desde registro jsp
-       String valores="'"+mclave+"',"+mcantidad+",'"+mdescripcion+"','"+mfecha+"','"+mtipo+"',id from producto where clave='"+producto+"'";
-       //insertar los datos en tabla merma
-        c.insertardemastablas(campos, "merma",valores );
-                //actualizar cantidad de productos
-        c.actualizar("cantidad=cantidad-"+cant, "producto", "clave='"+producto+"'");
+     
+        String tipo = request.getParameter("consulta");
+        String bus_clave = request.getParameter("idprod");
+        
+               Conexion c = new Conexion();
+               
+               if(tipo=="todos"){
+                   c.consultaGeneral("Productos");
+               }
+               
+               if(tipo=="id"){
+                c.consulta("id,nombre,compra,venta,cantidad,proveedor", "Productos" , "id= "+bus_clave, 0);
+               }
+              
+        response.sendRedirect("Compras/Productos.jsp");
+    }
 
-        response.sendRedirect("Inventario/InventarioMermaAgregar.jsp");
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Consulta_pod.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Consulta_pod.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -77,9 +88,9 @@ public class AgregarMerma extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AgregarMerma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Consulta_pod.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AgregarMerma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Consulta_pod.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -94,3 +105,4 @@ public class AgregarMerma extends HttpServlet {
     }// </editor-fold>
 
 }
+//nuevo

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author claudia
  */
-@WebServlet(name = "ModificarMerma", urlPatterns = {"/ModificarMerma"})
+@WebServlet(name = "ModificaMerma", urlPatterns = {"/ModificaMerma"})
 public class ModificaMerma extends HttpServlet {
 
     /**
@@ -44,8 +44,11 @@ public class ModificaMerma extends HttpServlet {
         String cantidad = request.getParameter("cantidad");
         String descripcion = request.getParameter("descripcion");
         String fecha= request.getParameter("fecha");
-        String tipo= request.getParameter("mermatipo");
-        String campos="clave_merma='"+merma+"',cantidad="+cantidad+",descripcion='"+descripcion+"',fecha='"+fecha+"',tipo_merma='"+tipo+"'";
+        String tipo= request.getParameter("tipo");
+        //String campos="clave_merma='"+merma+"',cantidad="+cantidad+",motivo='"+descripcion+
+          //      "',fecha='"+fecha+"',tipo_merma='"+tipo+"',producto=(select id from producto where clave='"+producto+"')";
+        String campos="clave_merma='"+merma+"',cantidad="+cantidad+",motivo='"+descripcion+"',fecha='"+fecha+"',tipo_merma='"+tipo+"'";
+       //  String campos="clave_merma='"+merma+"',cantidad="+cantidad+",motivo='"+descripcion+"',fecha='"+fecha+"',tipo_merma='"+tipo+"'";
         c.actualizar(campos, "merma", "clave_merma='"+mermanterior+"'");
        // String campop="producto=(select id from producto where clave='"+producto+"')";
     //c.actualizar(camposa, "producto", referencia);

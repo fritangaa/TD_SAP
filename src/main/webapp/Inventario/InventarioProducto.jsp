@@ -102,30 +102,29 @@
         <th>
           clave Producto
         </th>
-      
         <th>
           Nombre Producto
         </th>
-      
         <th>
           tipo
         </th>
         <th>
           Unidad
         </th>
-        <th>
-          Cantidad
+       <th>
+          Costo de producto
         </th>
-      
-        <th>
-          Costo unitario
-        </th>
-        <th>
+       <th>
           Costo de venta
         </th>
-        
         <th>
           iva 
+        </th>
+      <th>
+          Cantidad
+        </th>
+       <th>
+          monto_total
         </th>
       </tr>
       <%
@@ -137,10 +136,11 @@
                            out.println("<td>"+lista.get(i).getNombre()+"</td>");
                            out.println("<td>"+lista.get(i).getTipo()+"</td>");
                            out.println("<td>"+lista.get(i).getUnidad()+"</td>");
-                           out.println("<td>"+lista.get(i).getCantidad()+"</td>");
                            out.println("<td>"+lista.get(i).getCostounitario()+"</td>");
                            out.println("<td>"+lista.get(i).getCostototal()+"</td>");
                            out.println("<td>"+lista.get(i).getIva()+"</td>");
+                           out.println("<td>"+lista.get(i).getCantidad()+"</td>");
+                           out.println("<td>"+lista.get(i).getMontototal()+"</td>");
                            out.println("</tr>");
                         }
                     %>

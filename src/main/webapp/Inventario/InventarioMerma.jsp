@@ -86,7 +86,7 @@
                                 <th>Clave merma</th>
                                 <th>Clave producto</th>
                                 <th>Cantidad</th>
-                                <th>Descripcion</th>
+                                <th>Motivo</th>
                                 <th>Fecha</th>
                                 <th>Tipo merma</th>                               
                             </tr>

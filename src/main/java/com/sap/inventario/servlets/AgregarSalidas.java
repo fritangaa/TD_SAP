@@ -6,6 +6,7 @@
 package com.sap.inventario.servlets;
 
 import com.sap.conexion.Conexion;
+import com.sap.inventario.clases.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,24 +46,19 @@ public class AgregarSalidas extends HttpServlet {
         Conexion c = new Conexion();
         String clave = request.getParameter("clave");
         String cantidad = request.getParameter("cantidad");
-        String fecha= request.getParameter("fecha");
-        String campos="clave,existencia,fecha,operacion";
-        String valores="'"+clave+"',"+cantidad+",'"+fecha+"','salida'";
-        c.insertar(campos, "producto", valores);
-        String camposa="producto set nombre=(select nombre from producto where operacion='entrada' and clave='CU1'),"
-                + "tipo=(select tipo from producto where operacion='entrada' and clave='CU1'),"
-                + "unidad=(select unidad from producto where operacion='entrada' and clave='CU1'),";
-        /*update producto set nombre=(select nombre from producto where operacion='entrada' and clave='CU1'),
-SAP-# 
-SAP-# 
-SAP-# costounitario=(select costounitario from producto where operacion='entrada' and clave='CU1');*/
-        String referencia="";
-    c.actualizar(camposa, "producto", referencia);
-//         c.actualizar("existencia=existencia-"+cantidad
-//                , "producto"
-//                , "clave='"+clave+"' and operacion='entrada'");
-//        
-         response.sendRedirect("Inventario/InventarioIngresarSalida.jsp");
+        //campos para actualizar productos
+        int cant=Integer.parseInt(cantidad);
+        String campos="cantidad=cantidad-"+cant;
+        //campos que se insertaran en detalle de orden de venta
+        String detallecampos="cantidad,precio_unitario,precio_total,idproducto";
+        //valores que se insertaran en detalle de orden de venta
+        
+        //actualizar cantidad de productos
+        c.actualizar(campos, "producto", "clave='"+clave+"'");
+        //insertar en tabla detalle de orden de venta y de orden de venta
+        c.insertardemastablas(detallecampos,"detalle_ordendeventa", cantidad+",costounitario,costounitario*"+cant+",id from producto where clave='"+clave+"'");
+        
+        response.sendRedirect("Inventario/InventarioIngresarSalida.jsp");
     }
 
     /**

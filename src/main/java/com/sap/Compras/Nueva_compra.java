@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.sap.inventario.servlets;
+package com.sap.Compras;
+
 
 import com.sap.conexion.Conexion;
-import com.sap.inventario.clases.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author montse
+ * @author Erick
  */
-@WebServlet(name = "AgregarEntrada", urlPatterns = {"/AgregarEntrada"})
-public class AgregarEntrada extends HttpServlet {
+@WebServlet(name = "Nueva_compra", urlPatterns = {"/Nueva_compra"})
+public class Nueva_compra extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,26 +32,34 @@ public class AgregarEntrada extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        Conexion c = new Conexion();
-        String eclave = request.getParameter("clave");
-        String cantidad = request.getParameter("cantidad");
-        int cant=Integer.parseInt(cantidad);
-
-        //campos para actualizar productos
-        //campos que se insertaran en detalle de orden de venta
-        String detallecampos="cantidad,id_producto";
-        //campos que se insetaran en orden de venta
         
+         Conexion c = new Conexion();
+         String folcompra= request.getParameter("folcompra");
+        String fecCompra = request.getParameter("fecCompra");
+        String total_pag = request.getParameter("total_pag");
+        String proveedor = request.getParameter("provComp");
         
-        //actualizar cantidad de productos
-        c.actualizar("cantidad=cantidad+"+cant, "producto", "clave='"+eclave+"'");
-        //insertar en tabla detalle de orden de venta y de orden de venta
-        c.insertardemastablas(detallecampos,"detallecompra", cantidad+",id from producto where clave='"+eclave+"'");
-      
-         response.sendRedirect("Inventario/InventarioAgregarEntrada.jsp");
-          
+        c.insertar("foliocompra,total_pago,fecha_compra ,pagoTotal", "Compra",folcompra+",'"+fecCompra+"',"+total_pag+",'"+proveedor+"'");
+        response.sendRedirect("Compras/Nuevo_comp.jsp");
+        
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       
+        
+        
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -74,9 +75,9 @@ public class AgregarEntrada extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AgregarEntrada.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Nueva_compra.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AgregarEntrada.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Nueva_compra.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -91,3 +92,5 @@ public class AgregarEntrada extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
