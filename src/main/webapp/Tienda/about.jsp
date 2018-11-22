@@ -7,7 +7,7 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+                  <link rel="stylesheet" type="text/css" href="../Recursos/Bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -74,7 +74,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="index.jsp.html">Home</a>
+								<a href="index.jsp">Home</a>
 								<ul class="sub-menu">
 									<li><a href="index.jsp.html">Homepage 1</a></li>
 									<li><a href="home-02.html">Homepage 2</a></li>
