@@ -118,30 +118,31 @@ public class Consultas {
         return l;
     
     }
-//    public static LinkedList Clave() throws SQLException,ClassNotFoundException{
-//       
-//     Connection conn;
-//        Class.forName("org.postgresql.Driver");
-//         LinkedList <Clave> l=new LinkedList<Clave>();
-//        Properties connProp = new Properties();
-//        connProp.put("user", "postgres");
-//        connProp.put("password", "root");
-//        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
-//        Statement stmt;        
-//        stmt = conn.createStatement();
-//         ResultSet rs = stmt.executeQuery("select id from Producto where clave='CU5' and operacion='entrada'");
-//        while (rs.next()) {
-//            Merma p=new Merma();
-//            p.setClavemerma(rs.getString("clave_merma"));
-//            p.setClavep(rs.getString("producto"));
-//            p.setCantidad(rs.getInt("cantidad"));
-//            p.setDescripcion(rs.getString("descripcion"));
-//            p.setFecha(rs.getString("fecha"));
-//            p.setTipoMerma(rs.getString("tipo_merma"));
-//            l.add(p);
-//        }
-//        conn.close();
-//        return l;
-//    }
+    public static LinkedList consultaReq() throws SQLException,ClassNotFoundException{
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+         LinkedList <Requisicion> l=new LinkedList<Requisicion>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(" select p.clave,r.clave,r.cantidad,"
+                 + "r.fecha_req,r.fecha_ent,r.comentarios from requisicion r,producto p where p.id=r.producto");
+        while (rs.next()) {
+            Requisicion p=new Requisicion();
+            p.setClavep(rs.getString("clave"));
+            p.setClave(rs.getString("clave"));
+            p.setCantidad(rs.getInt("cantidad"));
+            p.setFechareq(rs.getString("fecha_req"));
+            p.setFechaent(rs.getString("fecha_ent"));
+            p.setComentarios(rs.getString("comentarios"));
+            l.add(p);
+        }
+        conn.close();
+        return l;
+    
+    }
 }
     
