@@ -72,17 +72,17 @@
                 <h3 class="card-title" >Modificar Producto en Merma</h3><br><br>
                 <!--INICIO CUESTIONARIO-->
                 <label class="card-text">Ingrese la clave anterior de merma:</label><br>
-                <input type="text" id="mermaant" name="mermaant" class="form-control form-control-sm" />
+                <input type="text" id="mermaant" name="mermaant" required="required" minlength="2" maxlength="9"  class="form-control form-control-sm" />
                 <label class="card-text">Ingrese la clave de merma:</label><br>
-                <input type="text" id="merma" name="merma" class="form-control form-control-sm" />
+                <input type="text" id="merma" name="merma" required="required" minlength="2" maxlength="9"  class="form-control form-control-sm" />
                 <p class="card-text">Ingrese la clave del producto:</p>
-                <input type="text" id="producto" name="producto" class="form-control form-control-sm" />               
+                <input type="text" id="producto" required="required" name="producto" class="form-control form-control-sm" />               
                 <label class="card-text">Ingrese la cantidad:</label><br>
-                <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm" />
+                <input type="number" id="cantidad" required="required" name="cantidad" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese el motivo de la merma del producto</p>
-                <input type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" />
+                <input type="text" id="descripcion" minlength="2" maxlength="100" required="required"  name="descripcion" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese la fecha</p>
-                <input type="date" id="fecha" name="fecha" class="form-control form-control-sm" />
+                <input type="date" id="fecha" required="required" name="fecha" class="form-control form-control-sm" />
                 <p class="card-text">Ingrese tipo de merma</p>
                 <select id="tipo" name="tipo" class="form-control">
                                     <option value="x">Seleccione...</option>

@@ -9,6 +9,7 @@ import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author asus
  */
-@WebServlet(name = "Factura", urlPatterns = {"/Factura"})
-public class Factura extends HttpServlet {
+@WebServlet(name = "ModificarFactura", urlPatterns = {"/ModificarFactura"})
+public class ModificarFactura extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,42 +37,37 @@ public class Factura extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        String clave = request.getParameter("claveFactura");
-        String fecha = request.getParameter("fechaFactura");
-        String tipo = request.getParameter("tipoFactura");
-        String cliente = request.getParameter("nombredelclienteFactura");
-        String proveedor = request.getParameter("nombredelproveedorFactura");
-        String total = request.getParameter("totalFactura");
-        String idOVF = request.getParameter("idordendeventaFactura");
-        HttpSession sesion = request.getSession(true);
+       response.setContentType("text/html;charset=UTF-8");
+        String factura = request.getParameter("modificarIdFactura");
         Conexion c = new Conexion();
+        HttpSession sesion = request.getSession(true);
+        //usuario usu = new usuario();
+         ArrayList lista = c.consulta("id,clave,fecha,nombrecliente,nombreproveedor,total"
+                 ,"factura", "id = "+factura, 12);
+        if(!lista.isEmpty()){
+            request.getSession().setAttribute("factura",lista);
+        //int i = c.insercionRegistro(usu.getId_emp(),  "rh", "Modifica empleado");
+            response.sendRedirect("Ventas/ModificarResultadoFactura.jsp");
+        }else{
+            //int i = c.insercionRegistro(usu.getId_emp(),  "rh", "Intento modificar empleado");
+            request.getSession().setAttribute("motivo", "El cliente no existe");
+            response.sendRedirect("Ventas/ErrorCliente.jsp");
+        }
+       
         
-        c.insertar("clave,fecha,tipo,nombrecliente,nombreproveedor,total,idordenventa","factura","'"+clave+"','"+fecha+"',"+tipo+",'"+cliente+"','"+proveedor+"',"+total+","+idOVF+"");
-        
-        
-        response.sendRedirect("Ventas/Factura.jsp");
-            }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarFactura.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -84,9 +80,5 @@ public class Factura extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    void setId(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

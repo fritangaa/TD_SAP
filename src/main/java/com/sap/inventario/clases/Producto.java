@@ -22,6 +22,17 @@ public class Producto {
     String operacion;
     double montototal;
     int cantidaddoble;
+    String imagen;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) 
+    {
+        this.imagen = imagen;
+    }
+    
 
     public int getCantidaddoble() {
         return cantidaddoble;

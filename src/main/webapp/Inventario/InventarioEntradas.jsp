@@ -22,6 +22,21 @@
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+<!--Validacion de campos
+    <script src="../Recursos/js/Inventario.js" type="text/javascript"></script>-->
+<script>
+$(document).ready(function() {
+                $('#buscarentrada').click(function(event) {
+                        var clavebuscar = $('#clave').val();        
+                        // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                        $.post('../Productos', {
+                                clavep : clavebuscar
+                        }, function(responseText) {                            
+                                $('#tablas').html(responseText);
+                        });
+                });
+        });
+        </script>
 </head>
 <body>    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
@@ -75,10 +90,10 @@
                 <h4>Consulta</h4>
                  
                     <div class="col-xs-10 col-md-10 central">
-                    <form action="" method="post">
+                        <form action="../Productos" method="post" >
                         <h5>Buscar ID producto</h5>
-                    <input name="clave" type="text" placeholder="ID Compra"/> 
-                    <input type="submit" value="Buscar"/>
+                    <input name="clave" id="clave" type="text" placeholder="producto"/> 
+                    <input type="submit" id="buscarentrada" name="buscarentrada" value="Buscar"/>
                     <h4>Reporte</h4>
                     <input type="submit" value="Generar"/>
                     <hr>
@@ -91,9 +106,9 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-8" id="tablas" >
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" >
       <div class="col-xs-offset-6 col-md-offset-6 central">
               <div class="container">
                 <h4>Productos Comprados</h4>

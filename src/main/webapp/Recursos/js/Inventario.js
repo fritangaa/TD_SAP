@@ -4,14 +4,25 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function() {
+ $(document).ready(function() {
                 $('#buscar').click(function(event) {
                         var clavebuscar = $('#clave').val();        
                         // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
                         $.post('../BuscarPorIDProducto', {
                                 clavep : clavebuscar
                         }, function(responseText) {                            
-                                $('#tablap').html(responseText);
+                                $('#tabla').html(responseText);
                         });
                 });
-});
+        });
+        $(document).ready(function() {
+                $('#buscarentrada').click(function(event) {
+                        var clavebuscar = $('#clave').val();        
+                        // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                        $.post('../Pentrada', {
+                                clavep : clavebuscar
+                        }, function(responseText) {                            
+                                $('#tablas').html(responseText);
+                        });
+                });
+        });

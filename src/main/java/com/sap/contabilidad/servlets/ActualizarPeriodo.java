@@ -39,7 +39,10 @@ public class ActualizarPeriodo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");             
         Conexion c=new Conexion();
         usuario usu = new usuario();
-        String campos="periodo="+request.getParameter("ejercicio")+", fechaini='"+request.getParameter("fechaini")+"', fechafin='"+request.getParameter("fechafin")+"', estatus='"+request.getParameter("estado")+"'";
+        String campos="periodo="+request.getParameter("ejercicio")
+                +", fechaini='"+request.getParameter("fechaini")
+                +"', fechafin='"+request.getParameter("fechafin")
+                +"', estatus='"+request.getParameter("estado")+"'";
         System.out.println("los campos son:"+campos);
         String referencia="clave='"+request.getParameter("claveperiodo")+"'";
         System.out.println("cadena de referencia:"+referencia);

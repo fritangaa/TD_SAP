@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,6 +9,7 @@ import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author claudia
  */
-@WebServlet(name = "AgregarProducto", urlPatterns = {"/AgregarProducto"})
-public class AgregarProducto extends HttpServlet {
+@WebServlet(name = "ProductoEntrada", urlPatterns = {"/ProductoEntrada"})
+public class ProductoEntrada extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,40 +37,44 @@ public class AgregarProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        //conexion
-        Conexion c = new Conexion();
-        //declaracion de campos para obtener lo ingresado en el jsp
-        String clave = request.getParameter("clave");
-        String nombre = request.getParameter("nombre");
-        String tipo = request.getParameter("tipo");
-        String unidad = request.getParameter("unidad");
-        String costounitario = request.getParameter("costo");
-        String costov=request.getParameter("costov");
-        String iva = request.getParameter("iva");
-        String cantidad = request.getParameter("cantidad");
-        //operacion de monto total
+//obtener conexion de clase conexion
+        // variables para insertar en la base de datos
+        String cadena=request.getParameter("clavep");  
+        Conexion c=new Conexion();
         
-        double vcosto=Double.parseDouble(costounitario);
-        double viva=Double.parseDouble(iva);
-        double monto=(vcosto*viva)+vcosto;
-        //Declaracion de campos de la base de datos
         String campos="clave,nombre,tipo,unidad,costounitario,precio_venta,iva,cantidad,monto_total";
-        //declaracion de variable que guarda los valores obtenidos en el jsp
-        String valores="'"+clave+"',"
-                + "'"+nombre+"',"
-                + "'"+tipo+"',"
-                + "'"+unidad+"',"
-                + ""+costounitario+","
-                + ""+costov+","
-                + ""+iva+","
-                + ""+cantidad+","
-                + ""+monto
-                ;
         
-        //insertar datos en la BD SAP
-        c.insertar(campos, "producto", valores);
-         response.sendRedirect("Inventario/InventarioProducto.jsp");
+        ArrayList l=c.consultaVariosCamposUnaClave(cadena, campos, "producto", 9);
+       try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */                  
+            out.println("<h1 class='text-center'> Consulta Realizada</h1>");         
+            out.println("<table class='tablas table'>");         
+            out.println("<tr>");
+            out.println("<th>clave</th>");
+            out.println("<th>nombre</th>");
+            out.println("<th>tipo</th>");
+            out.println("<th>Unidad</th>");
+            out.println("<th>Costo Unitario</th>");
+            out.println("<th>precio_venta</th>");
+            out.println("<th>iva</th>");
+            out.println("<th>cantidad</th>");
+            out.println("<th>monto_total</th>");
+            out.println("</tr>");
+            out.println("<tr>");                               
+            out.println("<td>"+l.get(0)+"</td>");
+            out.println("<td>"+l.get(1)+"</td>");
+            out.println("<td>"+l.get(2)+"</td>");
+            out.println("<td>"+l.get(3)+"</td>");
+            out.println("<td>"+l.get(4)+"</td>");
+            out.println("<td>"+l.get(5)+"</td>");
+            out.println("<td>"+l.get(6)+"</td>");
+            out.println("<td>"+l.get(7)+"</td>");
+            out.println("<td>"+l.get(8)+"</td>");
+            out.println("</tr>");            
+            out.println("</table>");         
+        }
     }
+
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -86,9 +90,9 @@ public class AgregarProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoEntrada.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoEntrada.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,17 +40,18 @@ public class ModificarCliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String cliente = request.getParameter("modificarIdCliente");
         Conexion c = new Conexion();
+        HttpSession sesion = request.getSession(true);
         //usuario usu = new usuario();
-         ArrayList lista = c.consulta("id,nombre,ape_pat,ape_mat,direccion,cp,municipio,edo,pais,rfc,cuentacontable,"
-                + "cuentabancaria,razon","cliente", "id = "+cliente, 13);
+         ArrayList lista = c.consulta("id,nombre,ape_pat,ape_mat,direccion,cp,municipio,edo,pais,rfc,"
+                + "cuentabancaria,razon","cliente", "id = "+cliente, 12);
         if(!lista.isEmpty()){
             request.getSession().setAttribute("cliente",lista);
-        //int i = c.insercionRegistro(usu.getId_emp(),  "rh", "Modifica empleado");
-            response.sendRedirect("Ventas/ModificarResultado.jsp");
+       
+            response.sendRedirect("Ventas/ModificarResultadoCliente.jsp");
         }else{
-            //int i = c.insercionRegistro(usu.getId_emp(),  "rh", "Intento modificar empleado");
+      
             request.getSession().setAttribute("motivo", "El cliente no existe");
-            response.sendRedirect("Ventas/Error.jsp");
+            response.sendRedirect("Ventas/ErrorCliente.jsp");
         }
         
     }

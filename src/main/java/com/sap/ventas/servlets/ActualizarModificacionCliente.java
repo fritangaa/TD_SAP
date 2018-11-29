@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,19 +48,19 @@ public class ActualizarModificacionCliente extends HttpServlet {
         String estado = request.getParameter("estadoClientes");
         String pais = request.getParameter("paisClientes");
         String rfc = request.getParameter("rfcClientes");
-        String cuentacontable = request.getParameter("cuentacontableClientes");
         String cuentabancaria = request.getParameter("cuentabancariaClientes");
         String razonsocial= request.getParameter("razonsocialClientes");
+        HttpSession sesion = request.getSession(true);
         
         Conexion c = new Conexion();
         
         c.actualizar("nombre = '"+nombre+"', ape_pat = '"+paterno+"',ape_mat = '"+materno+"',direccion = '"+direccion+
                 "',cp = "+cp+",municipio = '"+municipio+"',edo = '"+estado+"',pais = '"+pais+"',rfc = '"+rfc+
-                "',cuentacontable = '"+cuentacontable+"',cuentabancaria = '"+cuentabancaria+"',razon = '"+razonsocial+"'"
+                "',cuentabancaria = "+cuentabancaria+",razon = '"+razonsocial+"'"
                 , "cliente", "id = "+cliente);
                 
         
-            response.sendRedirect("Ventas/ModificarCliente.jsp");
+            response.sendRedirect("Ventas/Clientes.jsp");
            
         
     }

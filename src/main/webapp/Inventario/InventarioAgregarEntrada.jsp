@@ -76,9 +76,9 @@
                 <h3 class="card-title" >Agregar Entrada </h3><br><br>
                 <!--INICIO CUESTIONARIO-->
                 <label class="card-text">Ingrese clave de producto:</label><br>
-                <input type="text" id="clave" name="clave" class="form-control form-control-sm" />
+                <input type="text" id="clave" name="clave" class="form-control form-control-sm" required="required" />
                 <label class="card-text">Ingrese la cantidad: </label>
-                <input type="number" id="cantidad" name="cantidad"  class="form-control form-control-sm" /><br>
+                <input type="number" id="cantidad" name="cantidad"  class="form-control form-control-sm" required="required" /><br>
                <input id="btn" type="submit" value="Guardar" class="btn btn-success" style="width: 330px; margin: 0 auto;"/>
                         </form>
             </div>

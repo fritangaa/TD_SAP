@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ModificarCliente
-    Created on : 12/10/2018, 1:59:05 AM
+    Document   : Clientes
+    Created on : 12/10/2018, 1:44:05 AM
     Author     : asus
 --%>
 
@@ -34,12 +34,12 @@
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
-                     <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
                         </div>
-                    </li>                          
+                    </li>                                 
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
@@ -68,9 +68,10 @@
             </div>
         </nav>
     </header>
+    
     <br>
     <br>
-<!--Contenedor principal de la pagina-->
+    <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
     <div class="row">
@@ -110,38 +111,75 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
-                    <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
-                        <br>
-                        <form method="POST" action="../ModificarCliente" >
-                            <table>
-                                <tr>
-                                    <td>
-                                        Id&nbsp;del&nbsp;cliente
-                                    </td>
-                                    <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td colspan="2">
-                                        <center>
-                                            <br>
-                                            <input type="submit" class="btn btn-primary" value="Buscar"/>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
+             <h1 class="text-uppercase text-center">Agregar Cliente</h1>
+             <br>
+             <form method="POST" autocomplete="off" action="../Clientes" id="formClientes" name="formClientes">
+                <div class="row">
+                 <div class="col-xs-4 col-md-4">
+                    <label for="nombrecliente">Nombre:</label>
+                    <input type="text" class="form-control col-12" name="nombreClientes" id="nombreClientes" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="apcliente">Apellido Paterno:</label>
+                    <input type="text" class="form-control col-12" name="apClientes" id="apClientes" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="amcliente">Apellido Materno:</label>
+                     <input type="text" class="form-control col-12" name="amClientes" id="amClientes" required="required">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-8 col-md-8">
+                    <label for="direccioncliente">Dirección:</label>
+                    <input type="text" class="form-control col-12" name="direccionClientes" id="direccionClientes" required="required">
+                </div>
+                 <div class="col-xs-4 col-md-4">
+                    <label for="cpcliente">C.P:</label>
+                    <input type="number" class="form-control col-12"name="cpClientes" id="cpClientes" required="required">
+                </div> 
+                </div>
+                <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Municipio:</label>
+                    <input type="text" class="form-control col-12" name="municipioClientes" id="municipioClientes" required="required">
+                </div>
+                 <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Estado:</label>
+                    <input type="text" class="form-control col-12" name="estadoClientes" id="estadoClientes" required="required">
+                </div>
+                 <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">País:</label>
+                     <input type="text" class="form-control col-12" name="paisClientes" id="paisClientes" required="required">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">RFC:</label>
+                    <input type="text" class="form-control col-12" name="rfcClientes" id="rfcClientes" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Cuenta Bancaria:</label>
+                    <input type="number" class="form-control col-12" name="cuentabancariaClientes" id="cuentabancariaClientes" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Razón Social:</label>
+                    <input type="text" class="form-control col-12"name="razonsocialClientes" id="razonsocialClientes" required="required">
+                </div>
+                </div>
+            <br>
+            <center>
+            <div>
+            <input type="submit" value="Agregar" class="btn btn-primary"/>    
+            </div>
+            </center>
+            
+            </form>
+            
         </div>
-        
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
         </div>
-</body>
+    </div>
+</div>
+    </body>
 </html>
-
-    
-    
-  

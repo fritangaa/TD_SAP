@@ -1,9 +1,12 @@
 <%-- 
-    Document   : ModificarCliente
-    Created on : 12/10/2018, 1:59:05 AM
+    Document   : Factura
+    Created on : 12/10/2018, 1:44:05 AM
     Author     : asus
 --%>
 
+<%@page import="com.sap.ventas.clases.Factura"%>
+<%@page import="com.sap.ventas.servlets.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,16 +37,16 @@
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
-                     <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
-                        </div>
-                    </li>                          
+                       </div>
+                    </li>                                  
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                        <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
+                            <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
@@ -70,6 +73,7 @@
     </header>
     <br>
     <br>
+        
 <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
@@ -96,52 +100,32 @@
                 <table class="tabla">
                     <tr>
                     	<td>
-                    		<a href="AgregarCliente.jsp">Agregar Cliente</a>
+                    		<a href="AgregarFactura.jsp">Agregar Factura</a>
                         </td>
                     </tr>
                     <tr>
                     	<td>
-                    		<a href="ModificarCliente.jsp">Modificar Cliente</a>
+                    		<a href="ModificarFactura.jsp">Modificar Factura</a>
                         </td>
                     </tr>
+                    <tr>
+                    	<td>
+                    		<a href="ImprimirFactura.jsp">Imprimir Factura</a>
+                        </td>
+                    </tr>
+                    
                 </table>
               </div>
             </div>            
         </div>
         <!--Columna Central-->
-        <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
-                    <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
-                        <br>
-                        <form method="POST" action="../ModificarCliente" >
-                            <table>
-                                <tr>
-                                    <td>
-                                        Id&nbsp;del&nbsp;cliente
-                                    </td>
-                                    <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td colspan="2">
-                                        <center>
-                                            <br>
-                                            <input type="submit" class="btn btn-primary" value="Buscar"/>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
-        </div>
-        
-        <!--columna de la derecha-->
-        <div class="col-xs-3 col-md-3 derecha table-responsive">
-        </div>
+        <div class="col-xs-6 col-md-6 central table-responsive">   
+            <h1 class="titulo">Lo implementara omar y mauricio</h1
+            <!--columna de la derecha-->
+            <div class="col-xs-3 col-md-3 derecha table-responsive">
+            </div>
+    </div>
+</div>
 </body>
 </html>
-
-    
-    
-  
+   

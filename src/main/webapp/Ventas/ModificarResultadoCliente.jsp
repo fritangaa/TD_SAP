@@ -1,10 +1,13 @@
 <%-- 
-    Document   : ModificarCliente
-    Created on : 12/10/2018, 1:59:05 AM
+    Document   : ModificarResultado
+    Created on : 12/10/2018, 2:30:05 AM
     Author     : asus
 --%>
-
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    ArrayList lista = (ArrayList) request.getSession().getAttribute("cliente");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +46,7 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                        <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
+                            <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
@@ -70,7 +73,8 @@
     </header>
     <br>
     <br>
-<!--Contenedor principal de la pagina-->
+    
+    <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
     <div class="row">
@@ -110,38 +114,83 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
-                    <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
-                        <br>
-                        <form method="POST" action="../ModificarCliente" >
-                            <table>
-                                <tr>
-                                    <td>
-                                        Id&nbsp;del&nbsp;cliente
-                                    </td>
-                                    <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td colspan="2">
-                                        <center>
-                                            <br>
-                                            <input type="submit" class="btn btn-primary" value="Buscar"/>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
+             <h1 class="text-uppercase text-center">Modificar Cliente</h1>
+             <br>
+             <form method="POST" autocomplete="off" action="../ActualizarModificacionCliente" id="formContratarEmp" name="formContratarEmp">
+                
+                <div class="row">
+                <br>
+                <div class="col-xs-2 col-md-2">
+                    <label for="idcliente">Id del Cliente:</label>
+                    <input type="text" class="form-control col-12" name="idModificarCli" id="idModificarCli" value="<%= lista.get(0) %>" required="required" readonly="readonly">
+                </div>
+                </div>
+                <br>
+                <div class="row">
+                <br>
+                <div class="col-xs-4 col-md-4">
+                    <label for="nombrecliente">Nombre:</label>
+                    <input type="text" class="form-control col-12" name="nombreClientes" id="nombreClientes" value="<%= lista.get(1) %>" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="apcliente">Apellido Paterno:</label>
+                    <input type="text" class="form-control col-12" name="apClientes" id="apClientes" value="<%= lista.get(2) %>" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="amcliente">Apellido Materno:</label>
+                     <input type="text" class="form-control col-12" name="amClientes" id="amClientes" value="<%= lista.get(3) %>" required="required">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-8 col-md-8">
+                    <label for="direccioncliente">Dirección:</label>
+                    <input type="text" class="form-control col-12" name="direccionClientes" id="direccionClientes" value="<%= lista.get(4) %>" required="required">
+                </div>
+                 <div class="col-xs-4 col-md-4">
+                    <label for="cpcliente">C.P:</label>
+                    <input type="number"  class="form-control col-12"name="cpClientes" id="cpClientes" value="<%= lista.get(5) %>" required="required">
+                </div> 
+                </div>
+                <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Municipio:</label>
+                    <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="municipioClientes" id="municipioClientes" value="<%= lista.get(6) %>" required="required">
+                </div>
+                 <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Estado:</label>
+                    <input type="text"  class="form-control col-12" name="estadoClientes" id="estadoClientes" value="<%= lista.get(7) %>" required="required">
+                </div>
+                 <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">País:</label>
+                     <input type="text"  class="form-control col-12" name="paisClientes" id="paisClientes" value="<%= lista.get(8) %>" required="required">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">RFC:</label>
+                    <input type="text" class="form-control col-12" name="rfcClientes" id="rfcClientes" value="<%= lista.get(9) %>" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Cuenta Bancaria:</label>
+                    <input type="number" class="form-control col-12" name="cuentabancariaClientes" id="cuentabancariaClientes" value="<%= lista.get(10) %>" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="municipiocliente">Razón Social:</label>
+                    <input type="text" class="form-control col-12"name="razonsocialClientes" id="razonsocialClientes" value="<%= lista.get(11) %>" required="required">
+                </div>
+                </div>
+                <br>
+                <center>
+                <div>
+                <input type="submit" value="Modificar" class="btn btn-primary"/>    
+                </div>
+                </center>
+                </form>
         </div>
-        
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
         </div>
-</body>
-</html>
-
-    
-    
-  
+    </div>
+</div>
+    </body>
+</html>                         

@@ -9,6 +9,7 @@ import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author claudia
  */
-@WebServlet(name = "Requisicion", urlPatterns = {"/Requisicion"})
-public class Requisicion extends HttpServlet {
+@WebServlet(name = "Productos", urlPatterns = {"/Productos"})
+public class Pentrada extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,26 +37,36 @@ public class Requisicion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-    //conexion
-        Conexion c = new Conexion();
-    //declaracion de campos para obtener lo ingresado en el jsp
-//     String forden = request.getParameter("fechao");
-     String clave = request.getParameter("clave");
-     String fentrega = request.getParameter("fechae");
-     String producto = request.getParameter("producto");
-     String cantidad = request.getParameter("cantidadp");
-     String comentario = request.getParameter("comentario");
-     int cant=Integer.parseInt(cantidad);
-//       // insertar los registros en la tabla
-     String campos="clave,cantidad,producto,fecha_ent,comentarios, fecha_req";
-     String valores="'"+clave+"',"+cant+",id,'"+fentrega+"','"+comentario+"',CURRENT_DATE from producto where clave='"+producto+"'";
-        c.insertardemastablas(campos, "requisicion",valores);
-     
-        response.sendRedirect("Inventario/InventarioDetalleReq.jsp");
-          
-        }
+       //obtener conexion de clase conexion
+        // variables para insertar en la base de datos
+        String cadena=request.getParameter("clavep");  
+        Conexion c=new Conexion();
+        
+        String campos="clave,nombre,cantidad,costounitario,precio_venta,iva";
+        
+        ArrayList l=c.consultaVariosCamposUnaClave(cadena, campos, "producto", 9);
+       try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */                  
+            out.println("<h1 class='text-center'> Consulta Realizada</h1>");         
+            out.println("<table class='tablas table'>");         
+            out.println("<tr>");
+            out.println("<th>clave</th>");
+            out.println("<th>nombre</th>");
+            out.println("<th>cantidad</th>");
+            out.println("<th>Costo Unitario</th>");
+            out.println("<th>precio_venta</th>");
+            out.println("<th>iva</th>");
+            out.println("</tr>");
+            out.println("<tr>");                               
+            out.println("<td>"+l.get(0)+"</td>");
+            out.println("<td>"+l.get(1)+"</td>");
+            out.println("<td>"+l.get(2)+"</td>");
+            out.println("<td>"+l.get(3)+"</td>");
+            out.println("<td>"+l.get(4)+"</td>");
+            out.println("<td>"+l.get(5)+"</td>");
+            out.println("</tr>");            
+            out.println("</table>");         
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,9 +84,9 @@ public class Requisicion extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Requisicion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pentrada.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Requisicion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pentrada.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,9 +104,9 @@ public class Requisicion extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Requisicion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pentrada.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Requisicion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pentrada.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

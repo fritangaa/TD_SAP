@@ -4,6 +4,9 @@
     Author     : asus
 --%>
 
+<%@page import="com.sap.ventas.servlets.ConsultasGenerales"%>
+<%@page import="com.sap.ventas.clases.Cliente"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,20 +41,17 @@
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
-                            <a class="nav-link text-white" href="ModificarCliente.jsp">&nbsp;Modificar cliente</a>
-                                                             
                         </div>
                     </li>                                 
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-         
                             <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida Ventas</a>
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida de Ventas</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Factura.jsp">&nbsp;Factura</a>
                         </div>
@@ -65,7 +65,7 @@
                      
                               
                 </ul>   
-               <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
+               <form class="form-inline my-2 my-lg-0" action="../CerrarSesion">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
                 </form>
             </div>
@@ -74,124 +74,95 @@
     
     <br>
     <br>
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
-        <div class="card" text-center>
-            <div class="card-body">
     
-    <div class="row"><!-- INICIO DE SECCION PRINCIPAL -->
-                <div class="container-fluid">
-                    <center>
-                        <form method="POST" autocomplete="off" action="../Clientes" onsubmit="return validar();" id="formClientes" name="formClientes">
-                            <table>
-                                 <h1 class="text-uppercase text-center">Agregar Cliente</h1>
-                                
-                                <tr>
-                                    
-                                    <td>
-                                        Nombre:
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="Ingresar nombre" class="form-control col-12" name="nombreClientes" id="nombreClientes" required="required">
-                                    </td>
-                                    <td>
-                                        Estado:
-                                    </td>
-                                    <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="estadoClientes" id="estadoClientes" required="required">
-                                    </td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Apellido Paterno:
-                                    </td>
-                                    <td>
-                                       <input type="text" placeholder="Apellido paterno" class="form-control col-12" name="apClientes" id="apClientes" required="required">
-                                    </td>
-                                    <td>
-                                        Pais:
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="paisClientes" id="paisClientes" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Apellido Materno:
-                                    </td>
-                                    <td>
-                                       <input type="text" placeholder="Apellido materno" class="form-control col-12" name="amClientes" id="amClientes" required="required">
-                                    </td>
-                                   <td>
-                                        RFC:
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="rfcClientes" id="rfcClientes" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Direccion:
-                                    </td>
-                                    <td>
-                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="direccionClientes" id="direccionClientes" required="required">
-                                    </td>
-                                    
-                                    <td>
-                                        Cuenta Contable:
-                                    </td>
-                                    <td>
-                                        <input type="number" placeholder="Escribe aqui" class="form-control col-12" name="cuentacontableClientes" id="cuentacontableClientes" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        C.P:
-                                    </td>
-                                    <td>
-                                       <input type="number" placeholder="Escribe aqui" class="form-control col-12"name="cpClientes" id="cpClientes" required="required">
-                                    </td>
-                                   
-                                    <td>
-                                        Cuenta Bancaria:
-                                    </td>
-                                    <td>
-                                       <input type="number" placeholder="Escribe aqui" class="form-control col-12" name="cuentabancariaClientes" id="cuentabancariaClientes" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                     <td>
-                                        Municipio:
-                                    </td>
-                                    <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="municipioClientes" id="municipioClientes" required="required">
-                                    </td>
-                                    
-                                    <td>
-                                        Razon Social:
-                                    </td>
-                                    <td>
-                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12"name="razonsocialClientes" id="razonsocialClientes" required="required">
-                                    </td>
-                                </tr>
-                                <br>
-                                <tr>
-                                    <br>
-                                    <td colspan="8" align="center">
-                                        <input type="submit" value="Registrar" class="btn btn-primary"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
+<!--Contenedor principal de la pagina-->
+<div class="container-fluid">
+    <!--HAciendo una fila para dividir el contenedor en columnas-->
+    <div class="row">
+        <!--Columna de la izquierda-->
+        <div class="col-xs-3 col-md-3 izquierda">            
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="container">
+                    <form action="" method="post">
+                        <div class="row">                        
+                            <div class="col-xs-2">
+                                <input id="clave" name="clave" class="form-control" type="text" placeholder="ingresa clave a buscar"/>
+                            </div>
+                        </div>
+                        <div class="row">                        
+                            <div class="col-xs-2">
+                              <input type="submit" value="buscar"/>       
+                            </div>
+                        </div>                    
+                    </form>
                 </div>
-            </div><!-- FIN DE SECCION PRINCIPAL -->
+                <hr/>
+                <table class="tabla">
+                    <tr>
+                    	<td>
+                    		<a href="AgregarCliente.jsp">Agregar Cliente</a>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    		<a href="ModificarCliente.jsp">Modificar Cliente</a>
+                        </td>
+                    </tr>
+                </table>
+              </div>
+            </div>            
+        </div>
+        <!--Columna Central-->
+         <div class="col-xs-9 col-md-9 central table-responsive">   
+            <h1 class="titulo">Clientes Registrados</h1>
+            <div class="scroll-y">
+                <table class="tablas table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>      
+                        <th>Apellido Paterno</th>                            
+                        <th>Apellido Materno</th>
+                        <th>Direccion</th>
+                        <th>C.P</th>      
+                        <th>Municipio</th>                            
+                        <th>Estado</th>
+                        <th>Pais</th>
+                        <th>RFC</th>      
+                        <th>Cuenta Bancaria</th>                            
+                        <th>Razon Social</th>
+                    </tr>
+                    <%
+                        LinkedList<Cliente> lista =ConsultasGenerales.mostrarCliente();
+                        for (int i=0;i<lista.size();i++)
+                        {
+                           out.println("<tr>");
+                           out.println("<td>"+lista.get(i).getId()+"</td>");
+                           out.println("<td>"+lista.get(i).getNombre()+"</td>");
+                           out.println("<td>"+lista.get(i).getApe_pat()+"</td>");                           
+                           out.println("<td>"+lista.get(i).getApe_mat()+"</td>");
+                           out.println("<td>"+lista.get(i).getDireccion()+"</td>");
+                           out.println("<td>"+lista.get(i).getCodpos()+"</td>");
+                           out.println("<td>"+lista.get(i).getMunicipio()+"</td>");                           
+                           out.println("<td>"+lista.get(i).getEdo()+"</td>");   
+                           out.println("<td>"+lista.get(i).getPais()+"</td>");
+                           out.println("<td>"+lista.get(i).getRfc()+"</td>");
+                           out.println("<td>"+lista.get(i).getCuentabanco()+"</td>");                           
+                           out.println("<td>"+lista.get(i).getRazon()+"</td>");   
+                           out.println("</tr>");
+                        }
+                    %>
+                   
+
+                </table>               
             </div>
         </div>
+        <!--columna de la derecha-->
+        <div class="col-xs-3 col-md-3 derecha table-responsive">
+        </div>
     </div>
-    
-    
-    
-    
-    </body>
+</div>
+</body>
 </html>
+
+        

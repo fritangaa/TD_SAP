@@ -96,12 +96,12 @@
                 <table class="tabla">
                     <tr>
                     	<td>
-                    		<a href="AgregarCliente.jsp">Agregar Cliente</a>
+                    		<a href="AgregarOrdenVenta.jsp">Agregar Orden de venta</a>
                         </td>
                     </tr>
                     <tr>
                     	<td>
-                    		<a href="ModificarCliente.jsp">Modificar Cliente</a>
+                    		<a href="ModificarOrdenVenta.jsp">Modificar Orden de Venta</a>
                         </td>
                     </tr>
                 </table>
@@ -111,16 +111,16 @@
         <!--Columna Central-->
         <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
                     <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
+                        <h1 class="text-uppercase text-center">Modificar Orden de Venta</h1>
                         <br>
-                        <form method="POST" action="../ModificarCliente" >
+                        <form method="POST" action="../ModificarOrdenVenta" autocomplete="off">
                             <table>
                                 <tr>
                                     <td>
-                                        Id&nbsp;del&nbsp;cliente
+                                        Id&nbsp;de la&nbsp; orden de venta
                                     </td>
                                     <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
+                                        <input type="number" id="modificarIdODV" name="modificarIdODV" class="form-control form-control-sm" required="required"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,6 +142,3 @@
 </body>
 </html>
 
-    
-    
-  

@@ -1,9 +1,12 @@
 <%-- 
-    Document   : ModificarCliente
-    Created on : 12/10/2018, 1:59:05 AM
+    Document   : Devolucion
+    Created on : 12/10/2018, 1:44:05 AM
     Author     : asus
 --%>
 
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.ventas.servlets.ConsultasGenerales"%>
+<%@page import="com.sap.ventas.clases.OrdenVenta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,16 +37,16 @@
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
-                     <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
                         </div>
-                    </li>                          
+                    </li>                               
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                        <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
+                     <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
@@ -70,6 +73,7 @@
     </header>
     <br>
     <br>
+          
 <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
@@ -96,12 +100,12 @@
                 <table class="tabla">
                     <tr>
                     	<td>
-                    		<a href="AgregarCliente.jsp">Agregar Cliente</a>
+                    		<a href="AgregarDevolucion.jsp">Agregar Devolución</a>
                         </td>
                     </tr>
                     <tr>
                     	<td>
-                    		<a href="ModificarCliente.jsp">Modificar Cliente</a>
+                    		<a href="ModificarDevolucion.jsp">Modificar Devolución</a>
                         </td>
                     </tr>
                 </table>
@@ -109,39 +113,60 @@
             </div>            
         </div>
         <!--Columna Central-->
-        <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
-                    <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
-                        <br>
-                        <form method="POST" action="../ModificarCliente" >
-                            <table>
-                                <tr>
-                                    <td>
-                                        Id&nbsp;del&nbsp;cliente
-                                    </td>
-                                    <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td colspan="2">
-                                        <center>
-                                            <br>
-                                            <input type="submit" class="btn btn-primary" value="Buscar"/>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
-        </div>
+         <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
+        <h1 class="text-uppercase text-center">Agregar Devolución</h1>
+        <form method="POST" autocomplete="off" action="../Devolucion" id="formDevolucion" name="formDevolucion">
+            <div class="row">
+                 <div class="col-xs-4 col-md-4">
+                    <label for="clavedevolucion">Clave devolución:</label>
+                    <input type="text" class="form-control col-12" name="claveDevolucion" id="claveDevolucion" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="fechadevolucion">Fecha:</label>
+                     <input type="date"  class="form-control col-12" name="fechaDevolucion" id="fechDevolucion" required="required">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-9 col-md-9">
+                    <label for="motivodevolucion">Motivo de devolucion:</label>
+                    <input type="text" class="form-control col-12" name="motivoDevolucion" id="motivoDevolucion" required="required">
+                </div>
+                  <div class="col-xs-3 col-md-3">
+                    <label for="claveordendeventaDevolucion">Clave orden de venta:</label>
+                    <Select  class="form-control" id="claveordendeventaDevolucion" name="claveordendeventaDevolucion" required="required">
+                              <option value="x">Seleccione...</option>
+                            <%
+                                LinkedList<OrdenVenta> h =ConsultasGenerales.opcionesOrdenVenta();
+                                for (int i=0;i<h.size();i++)
+                                {                                   
+                                   out.println("<option value='"+h.get(i).getIdordenventa()+"'>"+h.get(i).getClave_ordenventa()+"</option>");                                   
+                                }
+                            %> 
+                        </select>
+                </div>
+                </div>
+                <br>
+                <center>
+                <div>
+                <input type="submit" value="Realizar devolución" class="btn btn-primary"/>    
+                </div>
+                </center>
+        </form>
         
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
         </div>
+    </div>
+</div>
 </body>
 </html>
+   
 
     
     
-  
+    
+    
+    
+    

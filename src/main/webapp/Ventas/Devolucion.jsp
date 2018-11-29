@@ -4,6 +4,9 @@
     Author     : asus
 --%>
 
+<%@page import="com.sap.ventas.clases.Devolucion"%>
+<%@page import="com.sap.ventas.servlets.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,20 +41,17 @@
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
-                            <a class="nav-link text-white" href="ModificarCliente.jsp">&nbsp;Modificar cliente</a>
-                                                             
                         </div>
                     </li>                               
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                     
-                            <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
+                     <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida Ventas</a>
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida de Ventas</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Factura.jsp">&nbsp;Factura</a>
                         </div>
@@ -65,7 +65,7 @@
                      
                               
                 </ul>   
-               <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
+               <form class="form-inline my-2 my-lg-0" action="../CerrarSesion">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
                 </form>
             </div>
@@ -73,65 +73,94 @@
     </header>
     <br>
     <br>
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
-        <div class="card" text-center>
-            <div class="card-body">
-    
-    <div class="row"><!-- INICIO DE SECCION PRINCIPAL -->
-                <div class="container-fluid">
-                    <center>
-                        <form method="POST" autocomplete="off" action="../Devolucion" id="formDevolucion" name="formDevolucion">
-                            <table>
-                                 <h1 class="text-uppercase text-center">Devolucion</h1>
-                                
-                                <tr>
-                                    <td>
-                                        Clave de Devolucion:
-                                    </td>
-                                    <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="claveDevolucion" id="claveDevolucion" required="required">
-                                    </td>
-                                    <td>
-                                        Motivo de la Devolucion:
-                                    </td>
-                                    <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="motivoDevolucion" id="motivoDevolucion" required="required">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Fecha:
-                                    </td>
-                                    <td>
-                                      <input type="date" placeholder="Escribe aqui" class="form-control col-12" name="fechaDevolucion" id="fechDevolucion" required="required">
-                                    </td>
-                                    <td>
-                                        Id Orden de Venta:
-                                    </td>
-                                    <td>
-                                     <input type="number" placeholder="Escribe aqui" class="form-control col-12" name="idordendeventaDevolucion" id="idordendeventaDevolucion" required="required">
-                                    </td>
-                                </tr>
-                               
-                                <tr>
-                                    
-                                    <td colspan="8" align="center">
-                                        <input type="submit" value="Realizar Devolucion" class="btn btn-primary"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
+          
+<!--Contenedor principal de la pagina-->
+<div class="container-fluid">
+    <!--HAciendo una fila para dividir el contenedor en columnas-->
+    <div class="row">
+        <!--Columna de la izquierda-->
+        <div class="col-xs-3 col-md-3 izquierda">            
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="container">
+                    <form action="" method="post">
+                        <div class="row">                        
+                            <div class="col-xs-2">
+                                <input id="clave" name="clave" class="form-control" type="text" placeholder="ingresa clave a buscar"/>
+                            </div>
+                        </div>
+                        <div class="row">                        
+                            <div class="col-xs-2">
+                              <input type="submit" value="buscar"/>       
+                            </div>
+                        </div>                    
+                    </form>
                 </div>
-            </div><!-- FIN DE SECCION PRINCIPAL -->
+                <hr/>
+                <table class="tabla">
+                    <tr>
+                    	<td>
+                    		<a href="AgregarDevolucion.jsp">Agregar Devolución</a>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    		<a href="ModificarDevolucion.jsp">Modificar Devolución</a>
+                        </td>
+                    </tr>
+                </table>
+              </div>
+            </div>            
+        </div>
+        <!--Columna Central-->
+        <div class="col-xs-6 col-md-6 central table-responsive">   
+            <h1 class="titulo">Devoluciones Registradas</h1>
+            <div class="scroll-y">
+                <table class="tablas table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Clave</th>      
+                        <th>Fecha</th>                            
+                        <th>Motivo</th>
+                    </tr>
+                    <%
+                        LinkedList<Devolucion> lista =ConsultasGenerales.mostrarDevolucion();
+                        for (int i=0;i<lista.size();i++)
+                        {
+                           out.println("<tr>");
+                           out.println("<td>"+lista.get(i).getId()+"</td>");
+                           out.println("<td>"+lista.get(i).getClave_devolucion()+"</td>");
+                           out.println("<td>"+lista.get(i).getFecha()+"</td>");                           
+                           out.println("<td>"+lista.get(i).getMotivo()+"</td>");   
+                           out.println("</tr>");
+                        }
+                    %>
+                   
+
+                </table>               
             </div>
         </div>
+        
+        <!--columna de la derecha-->
+        <div class="col-xs-3 col-md-3 derecha table-responsive">
+        </div>
     </div>
-    
-   
-   
-    
-    
-    </body>
+</div>
+</body>
 </html>
+   
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

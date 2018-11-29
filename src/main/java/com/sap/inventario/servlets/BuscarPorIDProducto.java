@@ -38,29 +38,27 @@ public class BuscarPorIDProducto extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
        //obtener conexion de clase conexion
-        Conexion c=new Conexion();
         // variables para insertar en la base de datos
-        String clave = request.getParameter("bclave");
-        System.out.println("cadena:"+clave);
-        //campos de la tabla producto que vamos a mostrar
-        String campos=" clave,nombre,tipo,unidad,costounitario,precio_venta,iva,cantidad,monto_total";
-        //condicion para que nos muestre esos datos en especifico
-        String condicion=" clave='"+clave+"'";
+        String cadena=request.getParameter("clavep");  
+        Conexion c=new Conexion();
         
-        ArrayList l=c.consultaVariosCamposUnaClave2(condicion, campos, "producto", 8);
+        String campos="clave,nombre,tipo,unidad,costounitario,precio_venta,iva,cantidad,monto_total";
+        
+        ArrayList l=c.consultaVariosCamposUnaClave(cadena, campos, "producto", 9);
        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */                  
             out.println("<h1 class='text-center'> Consulta Realizada</h1>");         
-            out.println("<table class='tablap'>");         
+            out.println("<table class='tablas table'>");         
             out.println("<tr>");
-            out.println("<th>Clave</th>");
-            out.println("<th>Nombre</th>");
-            out.println("<th>Tipo</th>");
+            out.println("<th>clave</th>");
+            out.println("<th>nombre</th>");
+            out.println("<th>tipo</th>");
             out.println("<th>Unidad</th>");
-            out.println("<th>Existencia</th>");
             out.println("<th>Costo Unitario</th>");
-            out.println("<th>Costo</th>");
+            out.println("<th>precio_venta</th>");
             out.println("<th>iva</th>");
+            out.println("<th>cantidad</th>");
+            out.println("<th>monto_total</th>");
             out.println("</tr>");
             out.println("<tr>");                               
             out.println("<td>"+l.get(0)+"</td>");
@@ -71,6 +69,7 @@ public class BuscarPorIDProducto extends HttpServlet {
             out.println("<td>"+l.get(5)+"</td>");
             out.println("<td>"+l.get(6)+"</td>");
             out.println("<td>"+l.get(7)+"</td>");
+            out.println("<td>"+l.get(8)+"</td>");
             out.println("</tr>");            
             out.println("</table>");         
         }

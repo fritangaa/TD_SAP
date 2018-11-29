@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ModificarCliente
-    Created on : 12/10/2018, 1:59:05 AM
+    Document   : Factura
+    Created on : 12/10/2018, 1:44:05 AM
     Author     : asus
 --%>
 
@@ -34,12 +34,12 @@
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
-                     <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
                         </div>
-                    </li>                          
+                    </li>                                  
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
@@ -70,6 +70,7 @@
     </header>
     <br>
     <br>
+        
 <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
@@ -96,12 +97,12 @@
                 <table class="tabla">
                     <tr>
                     	<td>
-                    		<a href="AgregarCliente.jsp">Agregar Cliente</a>
+                    		<a href="AgregarDevolucion.jsp">Agregar Devolucion</a>
                         </td>
                     </tr>
                     <tr>
                     	<td>
-                    		<a href="ModificarCliente.jsp">Modificar Cliente</a>
+                    		<a href="ModificarDevolucion.jsp">Modificar Devolucion</a>
                         </td>
                     </tr>
                 </table>
@@ -109,18 +110,18 @@
             </div>            
         </div>
         <!--Columna Central-->
-        <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
+         <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
                     <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
+                        <h1 class="text-uppercase text-center">Modificar Devolucion</h1>
                         <br>
-                        <form method="POST" action="../ModificarCliente" >
+                        <form method="POST" action="../ModificarDevolucion" autocomplete="off">
                             <table>
                                 <tr>
                                     <td>
-                                        Id&nbsp;del&nbsp;cliente
+                                        Id&nbsp;de&nbsp;devolucion
                                     </td>
                                     <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
+                                        <input type="number" id="modificarIdDevolucion" name="modificarIdDevolucion" class="form-control form-control-sm" required="required"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -135,13 +136,12 @@
                         </form>
                     </center>
         </div>
-        
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
         </div>
+    </div>
+</div>
 </body>
 </html>
+   
 
-    
-    
-  

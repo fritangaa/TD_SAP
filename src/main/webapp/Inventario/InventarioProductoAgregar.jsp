@@ -71,13 +71,13 @@
                 <div class="container">
                     <h4 class="titulo">Agregar Nuevo Producto </h4>
                     <div class="container">
-                        <form  action="../AgregarProducto" method="post">                                                                                              
+                        <form  action="../AgregarProducto" method="post" >                                                                                               
                             <div class="form-group">
                                 <label for="clave">Ingrese la clave de producto:</label><br>
-                                <input type="text" id="clave" name="clave" class="form-control" required="required" />
+                                <input type="text" id="clave" minlength="2" maxlength="9" name="clave" class="form-control" required="required" />
                             
                                 <label for="nombre">Ingrese el nombre del producto:</label><br>
-                                <input type="text" id="nombre" name="nombre" class="form-control" required="required" />    
+                                <input type="text" id="nombre" name="nombre" maxlength="30" class="form-control" required="required" />    
                                 
                                 <label for="tipo">Ingrese tipo de producto</label>
                                  <select id="tipo" name="tipo" class="form-control">
@@ -104,17 +104,17 @@
                                     <option value="lote">lote</option>
                                  </select>
                 <label for="costo">Ingrese el costo del producto:</label>
-                <input type="number" id="costo" name="costo" step="0.00" class="form-control " required="required" />  
+                <input type="number" id="costo" name="costo" step="0.01" class="form-control "  />  
                 
                 <label for="costo">Ingrese el costo de venta:</label>
-                <input type="number" id="costov" name="costov" step="0.00" class="form-control " required="required" /> 
+                <input type="number" id="costov" name="costov" step="0.01" class="form-control " required="required" /> 
                 
                 <label for="iva">Ingrese el iva del producto</label>
-                <input type="text" id="iva" name="iva" step="0.00" class="form-control" required="required" />       
+                <input type="text" id="iva" name="iva" step="0.01" class="form-control" required="required" />       
                 
                 <label for="cantidad">Ingrese la cantidad del producto</label>
-                <input type="number" id="cantidad" name="cantidad" class="form-control " required="required" />                                   
-                                <input type="reset" value="Cancelar" class="btn btn-default"/>                                                        
+                <input type="number" id="cantidad" name="cantidad" class="form-control " required="required" /> 
+               <input type="reset" value="Cancelar" class="btn btn-default"/>                                                        
                                 <input type="submit" value="Agregar" class="btn btn-default"/>
                             </div>                            
                         </form>

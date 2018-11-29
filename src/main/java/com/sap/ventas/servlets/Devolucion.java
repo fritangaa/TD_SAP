@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,7 +40,8 @@ public class Devolucion extends HttpServlet {
         String clave = request.getParameter("claveDevolucion");
         String fecha = request.getParameter("fechaDevolucion");
         String motivo = request.getParameter("motivoDevolucion");
-        String idOVD = request.getParameter("idordendeventaDevolucion");
+        String idOVD = request.getParameter("claveordendeventaDevolucion");
+        HttpSession sesion = request.getSession(true);
         Conexion c = new Conexion();
         
         c.insertar("clave_devolucion,fecha,motivo,idordenventa","devolucion","'"+clave+"','"+fecha+"','"+motivo+"',"+idOVD+"");
@@ -79,5 +81,9 @@ public class Devolucion extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    void setId(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

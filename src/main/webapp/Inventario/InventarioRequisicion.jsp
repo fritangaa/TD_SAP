@@ -97,15 +97,15 @@
                 <h3 class="card-title" >Requisicion </h3><br><br>
                 <!--INICIO CUESTIONARIO-->
                 <label class="card-text">Ingrese clave de requisicion:</label><br>
-                <input type="text" id="clave" name="clave" class="form-control form-control-sm" />
+                <input type="text" id="clave" name="clave" minlength="2" maxlength="9" class="form-control form-control-sm" required="required"  />
                 <label class="card-text">Ingrese la clave del producto: </label>
-                <input type="text" id="producto" name="producto"  class="form-control form-control-sm" /><br>
+                <input type="text" id="producto" minlength="2" maxlength="9" name="producto" required="required"  class="form-control form-control-sm" /><br>
                 <label class="card-text">Ingrese la fecha de entrega: </label>
-                <input type="date" id="fechae" name="fechae"  class="form-control form-control-sm" /><br>
+                <input type="date" id="fechae" name="fechae" required="required"  class="form-control form-control-sm" /><br>
                 <label class="card-text">Ingrese la cantidad a pedir: </label>
-                <input type="number" id="cantidadp" name="cantidadp"  class="form-control form-control-sm" /><br>
+                <input type="number" id="cantidadp" name="cantidadp" required="required"   class="form-control form-control-sm" /><br>
                 <label class="card-text">Comentarios: </label>
-                <input type="text" id="comentario" name="comentario"  class="form-control form-control-sm" /><br>
+                <input type="text" id="comentario" maxlength="120"   name="comentario"  class="form-control form-control-sm" /><br>
                 <input id="btn" type="submit" value="Guardar" class="btn btn-success" style="width: 330px;background: #0066cc; margin: auto auto;"/>
                         </form>
             </div>

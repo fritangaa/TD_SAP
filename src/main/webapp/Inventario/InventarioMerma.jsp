@@ -70,9 +70,6 @@
                 <label class="card-text">Buscar id de merma</label><br>
                 <input type="text" id="bmerma" name="bmerma" class="form-control form-control-sm" />
                 <input id="bomerma" type="submit" value="Buscar" class="btn btn-success"/><br><br>
-                <p class="card-text">Eliminar producto de merma</p>
-                <input type="text" id="emerma" name="emerma" class="form-control form-control-sm" />
-                <input id="boemerma" type="submit" value="Eliminar" class="btn btn-success"/><br><br>
                 <hr>
                 <a href="InventarioMermaAgregar.jsp"><label class="card-text">Nuevo producto de merma</label></a>
                 <a href="InventarioMermaModificar.jsp"><label class="card-text">Modificar producto de merma</label></a>
@@ -120,7 +117,6 @@
     </div>
     </div>
     <!--/.Panel-->
-</div>
     
     </body>
 </html>

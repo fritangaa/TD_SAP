@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% String motivo = (String) request.getSession().getAttribute("motivo"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,12 +97,12 @@
                 <table class="tabla">
                     <tr>
                     	<td>
-                    		<a href="AgregarCliente.jsp">Agregar Cliente</a>
+                    		<a href="AgregarOrdenVenta.jsp">Agregar Orden de venta</a>
                         </td>
                     </tr>
                     <tr>
                     	<td>
-                    		<a href="ModificarCliente.jsp">Modificar Cliente</a>
+                    		<a href="ModificarOrdenVenta.jsp">Modificar Orden de Venta</a>
                         </td>
                     </tr>
                 </table>
@@ -109,39 +110,24 @@
             </div>            
         </div>
         <!--Columna Central-->
-        <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
-                    <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
-                        <br>
-                        <form method="POST" action="../ModificarCliente" >
-                            <table>
-                                <tr>
-                                    <td>
-                                        Id&nbsp;del&nbsp;cliente
-                                    </td>
-                                    <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td colspan="2">
-                                        <center>
-                                            <br>
-                                            <input type="submit" class="btn btn-primary" value="Buscar"/>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
+         <div class="col-xs-4 col-md-4 central table-responsive jumbotron">
+                 <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <h1 class="text-uppercase text-center">ERROR</h1>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                            <div id="motivo" name="motivo">
+                                    <%= motivo.toString() %>
+                            </div>
+                   </div>
+                </div>
         </div>
-        
-        <!--columna de la derecha-->
+<!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
         </div>
 </body>
 </html>
 
-    
-    
-  
+

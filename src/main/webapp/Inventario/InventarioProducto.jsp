@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inventario Producto</title>
     <!-- Bootstrap -->
+    
 <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
@@ -80,8 +81,9 @@
                   <!---BARRA DE LA DERECHA---------------------------------------------------------->
                 </div>
                     <div class="col-xs-10 col-md-10 central">
+                        <form action="../BuscarPorIDProducto" method="post" >
                         <h5>Buscar ID de producto</h5>
-                        <input name="clave" type="text" placeholder="ID producto"/><br><br> 
+                        <input  name="clave" id="clave" type="text" placeholder="ID producto"/><br><br> 
                 <input id="buscar" type="button" value="Buscar" class="btn btn-success"/><br><br>
                             <hr>
                      <a href="InventarioProductoAgregar.jsp"><label>Agregar producto</label></a>
@@ -89,6 +91,7 @@
                     <h4>Reporte</h4>
                     
                 <input id="generar" type="submit" value="Generar" class="btn btn-success"/><br><br>
+                </form>
                 <!--FIN DE BARRA-------------------------------------------------------------------->
             <!----TABLA INICIO------------------------------------------------------------------------->        
                 
@@ -96,7 +99,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-9" id="tabla" >
         <div class="card">
             <div class="card-body">
       <div class="col-xs-offset-6 col-md-offset-6 central">

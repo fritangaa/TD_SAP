@@ -76,9 +76,9 @@
                 <h3 class="card-title" >Ingresar salida de producto </h3><br><br>
                 <!--INICIO CUESTIONARIO-->
                 <label class="card-text">Ingrese clave de producto:</label><br>
-                <input type="text" id="clave" name="clave" class="form-control form-control-sm" />
+                <input type="text" id="clave" name="clave" class="form-control form-control-sm" minlength="2" maxlength="9" required="required" />
                 <label class="card-text">Ingrese la cantidad: </label>
-                <input type="number" id="cantidad" name="cantidad"  class="form-control form-control-sm" /><br>
+                <input type="number" id="cantidad" name="cantidad"  class="form-control form-control-sm" required="required"/><br>
                 <div>
                 <input id="btn" type="submit" value="Guardar" class="btn btn-success" style=" margin:  auto;"/>
                 <input type="reset" value="Cancelar" class="btn btn-default" style=" margin: auto;"/>                                                        

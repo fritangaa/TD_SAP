@@ -1,10 +1,9 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sap.inventario.servlets;
+package com.sap.ventas.servlets;
 
 import com.sap.conexion.Conexion;
 import java.io.IOException;
@@ -17,13 +16,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author claudia
+ * @author asus
  */
-@WebServlet(name = "AgregarProducto", urlPatterns = {"/AgregarProducto"})
-public class AgregarProducto extends HttpServlet {
+@WebServlet(name = "ActualizarModificacionDevolucion", urlPatterns = {"/ActualizarModificacionDevolucion"})
+public class ActualizarModificacionDevolucion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,41 +37,24 @@ public class AgregarProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        //conexion
+        String iddev = request.getParameter("idModificarDevolucion");
+        String clave = request.getParameter("claveDevolucion");
+        String fecha = request.getParameter("fechaDevolucion");
+        String motivo = request.getParameter("motivoDevolucion");
+        String idOVD = request.getParameter("claveordendeventaDevolucion");
+        HttpSession sesion = request.getSession(true);
         Conexion c = new Conexion();
-        //declaracion de campos para obtener lo ingresado en el jsp
-        String clave = request.getParameter("clave");
-        String nombre = request.getParameter("nombre");
-        String tipo = request.getParameter("tipo");
-        String unidad = request.getParameter("unidad");
-        String costounitario = request.getParameter("costo");
-        String costov=request.getParameter("costov");
-        String iva = request.getParameter("iva");
-        String cantidad = request.getParameter("cantidad");
-        //operacion de monto total
         
-        double vcosto=Double.parseDouble(costounitario);
-        double viva=Double.parseDouble(iva);
-        double monto=(vcosto*viva)+vcosto;
-        //Declaracion de campos de la base de datos
-        String campos="clave,nombre,tipo,unidad,costounitario,precio_venta,iva,cantidad,monto_total";
-        //declaracion de variable que guarda los valores obtenidos en el jsp
-        String valores="'"+clave+"',"
-                + "'"+nombre+"',"
-                + "'"+tipo+"',"
-                + "'"+unidad+"',"
-                + ""+costounitario+","
-                + ""+costov+","
-                + ""+iva+","
-                + ""+cantidad+","
-                + ""+monto
-                ;
-        
-        //insertar datos en la BD SAP
-        c.insertar(campos, "producto", valores);
-         response.sendRedirect("Inventario/InventarioProducto.jsp");
+                
+        c.actualizar("clave_devolucion = '"+clave+"', fecha = '"+fecha+"',motivo = '"+motivo+"',"
+                + "idordenventa = "+idOVD+"'","devolucion", "iddevolucion = "+iddev);
+       
+         response.sendRedirect("Ventas/Devolucion.jsp");
+           
+      
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -86,9 +69,9 @@ public class AgregarProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActualizarModificacionDevolucion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActualizarModificacionDevolucion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

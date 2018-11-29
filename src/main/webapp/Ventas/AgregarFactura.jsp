@@ -1,9 +1,13 @@
 <%-- 
-    Document   : ModificarCliente
-    Created on : 12/10/2018, 1:59:05 AM
+    Document   : Factura
+    Created on : 12/10/2018, 1:44:05 AM
     Author     : asus
 --%>
 
+<%@page import="com.sap.ventas.clases.Proveedor"%>
+<%@page import="com.sap.ventas.clases.Cliente"%>
+<%@page import="com.sap.ventas.servlets.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,16 +38,16 @@
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
-                     <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
                         </div>
-                    </li>                          
+                    </li>                                  
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                        <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
+                          <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
@@ -70,6 +74,7 @@
     </header>
     <br>
     <br>
+        
 <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
@@ -96,12 +101,17 @@
                 <table class="tabla">
                     <tr>
                     	<td>
-                    		<a href="AgregarCliente.jsp">Agregar Cliente</a>
+                    		<a href="AgregarFactura.jsp">Agregar Factura</a>
                         </td>
                     </tr>
                     <tr>
                     	<td>
-                    		<a href="ModificarCliente.jsp">Modificar Cliente</a>
+                    		<a href="ModificarFactura.jsp">Modificar Factura</a>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    		<a href="ImprimirFactura.jsp">Imprimir Factura</a>
                         </td>
                     </tr>
                 </table>
@@ -110,38 +120,70 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-8 col-md-8 central table-responsive jumbotron">
-                    <center>
-                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
-                        <br>
-                        <form method="POST" action="../ModificarCliente" >
-                            <table>
-                                <tr>
-                                    <td>
-                                        Id&nbsp;del&nbsp;cliente
-                                    </td>
-                                    <td>
-                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td colspan="2">
-                                        <center>
-                                            <br>
-                                            <input type="submit" class="btn btn-primary" value="Buscar"/>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </center>
+        <h1 class="text-uppercase text-center">Agregar Factura</h1>
+        <br>
+        <form method="POST" autocomplete="off" action="../Factura"  id="formFactura" name="formFactura">
+            <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <label for="nombrecliente">Clave de Factura:</label>
+                    <input type="text" class="form-control col-12" name="claveFactura" id="claveFactura" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="fechaFactura">Fecha:</label>
+                    <input type="date" class="form-control col-12" name="fechaFactura" id="fechaFactura" required="required">
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <label for="tipoFcatura">Tipo:</label>
+                    <input type="number" placeholder="0 cliente/1 proveedor" class="form-control col-12" name="tipoFactura" id="tipoFactura" required="required">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-md-4">
+                          <label for="cliente">Seleccione cliente:</label>
+                          <Select  class="form-control" id="cliente" name="cliente" required="required">
+                              <option value="x">Seleccione...</option>
+                            <%
+                                LinkedList<Cliente> l =ConsultasGenerales.opcionesCliente();
+                                for (int i=0;i<l.size();i++)
+                                {                                   
+                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+""+" "+""+l.get(i).getApe_pat()+""+" "+""+l.get(i).getApe_mat()+"</option>");                                   
+                                }
+                            %> 
+                          </select>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                          <label for="proveedor">Seleccione al Proveedor:</label>
+                          <Select  class="form-control" id="proveedor" name="proveedor" required="required">
+                              <option value="x">Seleccione...</option>
+                               <%
+                                    LinkedList<Proveedor> a =ConsultasGenerales.opcionesProveedor();
+                                    for (int i=0;i<a.size();i++)
+                                    {                                   
+                                        out.println("<option value='"+a.get(i).getId()+"'>"+a.get(i).getNombre()+"</option>");                                   
+                                    }
+                                %>
+                           </select>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                     <label for="tipoFcatura">Total:</label>
+                     <input type="number" placeholder="Escribe aqui" class="form-control col-12" name="totalFactura" id="idordendeventaFactura" required="required">
+                </div>
+            </div>
+                <br>
+                <br>
+                <center>
+                <div>
+                <input type="submit" value="Agregar factura" class="btn btn-primary"/>    
+                </div>
+                </center>
+               
+                
+        </form>
         </div>
-        
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
         </div>
+</div>
 </body>
 </html>
-
-    
-    
-  
+   
