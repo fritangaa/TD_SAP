@@ -60,11 +60,11 @@ public class AgregarProducto extends HttpServlet {
                 + "'"+nombre+"',"
                 + "'"+tipo+"',"
                 + "'"+unidad+"',"
-                + ""+costounitario+","
-                + ""+costov+","
-                + ""+iva+","
-                + ""+cantidad+","
-                + ""+monto
+                +costounitario+","
+                +costov+","
+                +iva+","
+                +cantidad+","
+                +monto
                 ;
         
         //insertar datos en la BD SAP
