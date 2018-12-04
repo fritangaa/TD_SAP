@@ -56,6 +56,7 @@
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otro</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Devolucion.jsp">&nbsp;Devolucion</a>
+                            <a class="nav-link text-white" href="Subastas.jsp">&nbsp;Subastar</a>
                         </div>
                     </li> 
                      
