@@ -157,7 +157,7 @@ and open the template in the editor.
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div style="background-color: #fff; margin: 0px 10px 10px 10px;">
                     <br>
-                    <form action="../GeneraReporte" method="post">
+                    <form action="../envio"  method="post">
                         <center>
                             <input class="btn btn-danger text-white" style="background-color: #000" type="submit" value="Generar Reporte" />
                         </center>
