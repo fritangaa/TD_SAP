@@ -4,4 +4,6 @@
     <system systemId="http://192.168.10.20:8080/SAPito-13200106825016959517.0-SNAPSHOT/Servidor?xsd=1" uri="wsdl/192.168.10.20_8080/SAPito-13200106825016959517.0-SNAPSHOT/Servidor.xsd_1.xsd"/>
     <system systemId="http://192.168.207.116:8080/banca-web/transaccionService?wsdl" uri="wsdl/192.168.207.116_8080/banca-web/transaccionService.wsdl"/>
     <system systemId="http://192.168.207.116:8080/banca-web/transaccionService?xsd=1" uri="wsdl/192.168.207.116_8080/banca-web/transaccionService.xsd_1.xsd"/>
+    <system systemId="http://192.168.207.30:8080/Subastas/subastasServicio?wsdl" uri="wsdl/192.168.207.30_8080/Subastas/subastasServicio.wsdl"/>
+    <system systemId="http://192.168.207.30:8080/Subastas/subastasServicio?xsd=1" uri="wsdl/192.168.207.30_8080/Subastas/subastasServicio.xsd_1.xsd"/>
 </catalog>
