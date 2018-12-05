@@ -298,7 +298,7 @@
 
                                 <div class="size-209 p-t-1">
                                     <span class="mtext-110 cl2">
-                                        $79.65
+                                        $36.00
                                     </span>
                                 </div>
                             </div>
