@@ -144,7 +144,7 @@ function soloNumeros(e){
                         LinkedList<Producto> lista =Consultas.consultaProducto();
                         for (int i=0;i<lista.size();i++)
                         {
-                           out.println("<form name='miformulario' action='../SubastarArticulo'>"
+                           out.println("<form name='miformulario' action='../SubastarArticulo' method='post'>"
                                    + "<tr>");                               
                            out.println("<td> <input  name='idproducto' size=4 id=clave value='"+lista.get(i).getClave()+"' readonly></td>");
                            out.println("<td> <input  name='desc' size=11 id=clave value='"+lista.get(i).getNombre()+"' readonly></td>");
@@ -157,7 +157,7 @@ function soloNumeros(e){
                            out.println("<td>"
                                    + "<input  name='clave' id=clave type=number min=0 max=9 placeholder=Cantidad required></td>");
                            out.println("<td> "
-                                   + "<input id=subastar type=button   value=Subastar class=btn btn-success/><br>"
+                                   + "<input id='subastar' type='button'   value='Subastar' class='btn btn-success'/><br>"
                                    + "</form>"
                                    + "<br>"
                                    + "</td>");
