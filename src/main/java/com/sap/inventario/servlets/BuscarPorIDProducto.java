@@ -50,16 +50,18 @@ public class BuscarPorIDProducto extends HttpServlet {
             out.println("<h1 class='text-center'> Consulta Realizada</h1>");         
             out.println("<table class='tablas table'>");         
             out.println("<tr>");
-            out.println("<th>clave</th>");
-            out.println("<th>nombre</th>");
-            out.println("<th>tipo</th>");
+            out.println("<th>clave Producto</th>");
+            out.println("<th>Nombre Producto</th>");
+            out.println("<th>Tipo</th>");
             out.println("<th>Unidad</th>");
-            out.println("<th>Costo Unitario</th>");
-            out.println("<th>precio_venta</th>");
-            out.println("<th>iva</th>");
-            out.println("<th>cantidad</th>");
-            out.println("<th>monto_total</th>");
-            out.println("</tr>");
+            out.println("<th>Costo de producto</th>");
+            out.println("<th>Costo de venta</th>");
+            out.println("<th>Iva</th>");
+            out.println("<th>Cantidad Disponible</th>");
+            out.println("<th>Cantidad a Subastar</th>");
+            out.println("<th>Subastar</th>");
+            out.println("</tr>"
+                    + "<form name=miformulario action=../SubastarArticulo>");
             out.println("<tr>");                               
             out.println("<td>"+l.get(0)+"</td>");
             out.println("<td>"+l.get(1)+"</td>");
@@ -69,9 +71,16 @@ public class BuscarPorIDProducto extends HttpServlet {
             out.println("<td>"+l.get(5)+"</td>");
             out.println("<td>"+l.get(6)+"</td>");
             out.println("<td>"+l.get(7)+"</td>");
-            out.println("<td>"+l.get(8)+"</td>");
+            out.println("<td>"
+                      + "<input  name=clave id=clave type=number min=0 max=9 placeholder=Cantidad></td>"
+                      + "</form>");
+            out.println("<td> "
+                      + "<input id=subastar type=button   value=Subastar class=btn btn-success/><br>"
+                      + "</form>"
+                      + "<br>"
+                      + "</td>");
             out.println("</tr>");            
-            out.println("</table>");         
+            out.println("</table>");           
         }
                
     }
