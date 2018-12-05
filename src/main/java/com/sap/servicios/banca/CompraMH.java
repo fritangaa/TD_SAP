@@ -84,7 +84,11 @@ public class CompraMH extends HttpServlet {
                 c.insertar(campos, "producto", valores);
 
                 request.getSession().setAttribute("resultado", "Compra realizada");
+            }else{
+                request.getSession().setAttribute("resultado", "Problema con el proveedor");
             }
+        }else{
+            request.getSession().setAttribute("resultado", "Problema con el banco");
         }
 
         response.sendRedirect("Compras/OrdenCompra.jsp");
