@@ -56,7 +56,7 @@ public class BuscarSubasta extends HttpServlet {
             out.println("<th>Cantidad a Subastar</th>");
             out.println("<th>Subastar</th>");
             out.println("</tr>"
-                    + "<form name=miformulario action=../SubastarArticulo>");
+                    + "<form name='miformulario' action='../SubastarArticulo'>");
             out.println("<tr>");                               
             out.println("<td>"+l.get(0)+"</td>");
             out.println("<td>"+l.get(1)+"</td>");
