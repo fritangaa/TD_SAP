@@ -54,6 +54,7 @@
             <div class="card-body">
                     <h4 class="titulo">Pedir Orden de Compra</h4>
                     <div class="container">
+                        
                         <form  action="../AgregarProducto" method="post" >                                                                                               
                             <div class="form-group">
                                 <label for="clave">Ingrese la fecha:</label><br>

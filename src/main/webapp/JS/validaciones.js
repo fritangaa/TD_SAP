@@ -10,15 +10,27 @@ if(!op1 && !opt3 && !op3){
     
 }
 
+
 function agr_prov(){
     
     var rfc = document.getElementById('rfc').value;
-   
-  if(rfc===""){
-   alert("Campo rfc vacio");
-    return false;
-  }
-  
+    if (rfc.length>14 || rfc==="") {
+        alert('La longitud del RFC no puede ser mayor a 13 caracteres');
+       return false;
+    }
+    
+    var cont=0;
+    for (var i = 0; i < rfc.length; i++) {
+        
+        if (rfc[i]=="-") {
+            cont++;
+        }
+     }
+    
+    if (cont<3) {
+         alert('RFC no valido \n Ejemplo: ASJ-140318-5L6');
+       return false; 
+    }
     
       var razon;
     razon=document.getElementById("social").value;
@@ -28,9 +40,9 @@ function agr_prov(){
     
     }
     
-    var tel = document.getElementById('numprov').value;
+    var tel = document.getElementById('numpro').value;
     if (tel.length>10) {
-        alert('La longitud del telefono no puede ser mayor a 10 caracteres');
+        alert('La longitud del RFC no puede ser mayor a 13 caracteres');
         return false;
     }
     
@@ -51,7 +63,7 @@ function agr_prov(){
     
      //campo correo
     var correo;
-    correo=document.getElementById('corprov').value;
+    correo=document.getElementById('Correo').value;
      if (correo==="") {
      alert('el campo correo vacio');  
      return false;
@@ -65,7 +77,7 @@ function agr_prov(){
     }
     
     //campo cuenta contable
- var cuenta=document.getElementById('cuenta_conta').value;
+ var cuenta=document.getElementById('cuenta_agrprov').value;
    
      if (cuenta==="") {
      alert('El campo cuenta contable se encuentra vacio');  
@@ -73,7 +85,7 @@ function agr_prov(){
     }
     
     //campo limite de credito
- var limcred=document.getElementById('lim_credito').value;
+ var limcred=document.getElementById('limcred_agrprov').value;
    
      if (limcred==="") {
      alert('El campo limite de creditp se encuentra vacio');  
@@ -81,14 +93,14 @@ function agr_prov(){
     }
     
      //campo dias de credito
- var daycred=document.getElementById('dias_credito').value;
+ var daycred=document.getElementById('daycred_agr').value;
     
      if (daycred==="") {
      alert('El campo dias de credito se encuentra vacio');  
        return false;
     }
     //Campo banco
-    var banco=document.getElementById('banco').value;
+    var banco=document.getElementById('banco_agr').value;
    
      if (banco==="Banco") {
      alert('El campo banco vacio'); 
@@ -96,48 +108,43 @@ function agr_prov(){
      
     }
     //campo numero de cuenta
- var clave=document.getElementById('num_cuenta').value;
+ var clave=document.getElementById('numcuen').value;
     
      if (clave==='') {
      alert('El campo numero de cuenta se encuentra vacio');  
      return false
     }
      //campo clave
- var clave=document.getElementById('clv_cuenta').value;
+ var clave=document.getElementById('clave_cue').value;
     
      if (clave==='') {
      alert('El campo clave cuenta se encuentra vacio');  
      return false
     }
-    else{
-        alert('Proveddor agregado con exito');
-        return false;
-    }
     
     
-}
-
-function elim_prov(){
-  var clave=document.getElementById('elimprov').value;
-    
-     if (clave==='') {
-     alert('El campo clave  se encuentra vacio');  
-     return false
-    }  
-     else{
-        alert('Proceso llevado correctamente');
-        return false;
-    }
     
 }
 
 function editar_prov(){
-    var rfcedit = document.getElementById('rfc_edi').value;
-    if (rfcedit.length>13 || rfcedit==="") {
+    var rfcedit = document.getElementById('rfcedit').value;
+    if (rfcedit.length>14 || rfcedit==="") {
         alert('La longitud del RFC no puede ser mayor a 13 caracteres');
        return false;
     }
     
+    var cont=0;
+    for (var i = 0; i < rfcedit.length; i++) {
+        
+        if (rfcedit[i]=="-") {
+            cont++;
+        }
+     }
+    
+    if (cont<3) {
+         alert('RFC no valido \n Ejemplo: ASJ-140318-5L6');
+       return false; 
+    }
     
       var razonedit;
     razonedit=document.getElementById("razoned").value;
@@ -178,7 +185,7 @@ function editar_prov(){
     }
     
      //campo estado
-    var estedit=document.getElementById('estadoedit').value;
+    var estedit=document.getElementById('estedit').value;
     if(estedit==="Ciudad/Estado"){
         alert('Debes elegir un estado');
           return false;
@@ -186,7 +193,7 @@ function editar_prov(){
     }
     
     //campo cuenta contable
- var contedit=document.getElementById('cuentaconedit').value;
+ var contedit=document.getElementById('contedit').value;
    
      if (cuenta==="") {
      alert('El campo cuenta contable se encuentra vacio');  
@@ -195,7 +202,7 @@ function editar_prov(){
     }
     
     //campo limite de credito
- var limedit=document.getElementById('limcrededit').value;
+ var limedit=document.getElementById('limedit').value;
    
      if (limcred==="") {
      alert('El campo limite de creditp se encuentra vacio'); 
@@ -204,7 +211,7 @@ function editar_prov(){
     }
     
      //campo dias de credito
- var diasedit=document.getElementById('diascrededit').value;
+ var diasedit=document.getElementById('diasedit').value;
     
      if (diasedit==="") {
      alert('El campo dias de credito se encuentra vacio');  
@@ -220,24 +227,21 @@ function editar_prov(){
      
     }
     //campo numero de cuenta
- var numcuedit=document.getElementById('numcuentaedit').value;
+ var numcuedit=document.getElementById('numcuedit').value;
     
      if (numcuedit==="") {
      alert('El campo numero de cuenta se encuentra vacio');  
      return false
     }
      //campo clave
- var clavecuedit=document.getElementById('clvcuentaedit').value;
+ var clavecuedit=document.getElementById('clavecuedit').value;
     
      if (clavecuedit==='') {
      alert('El campo clave cuenta se encuentra vacio');  
      return false
     }
    
- else{
-     alert('Proveedor mofificado corecctamente');
-     return false;
- }
+ 
     
 }
 
@@ -314,23 +318,19 @@ function generar_Ord(){
      alert('El campo proveedor vacio');  
      
     }
-     else{
-        alert('Proceso llevado correctamente');
-        return false;
-    }
    
     }
     
     function editar_Ord(){
     
-    var foledit=document.getElementById("fol_ord").value;    
+    var foledit=document.getElementById("foledit").value;    
     if(foledit.length>6 ||foledit.length!==6){
         alert('El folio debe contener 6 digitos');
         
         return false;
     }
     
-    var fechedit=document.getElementById("fech_orden").value;
+    var fechedit=document.getElementById("fechedit").value;
     if ( fechedit== null || fechedit==0 ){
         alert('No se ha indicado la fecha inicial');
         return false;
@@ -351,7 +351,7 @@ function generar_Ord(){
     } 
     
    
-    var fechaent=new Date(document.getElementById('fec_entrega').value);    
+    var fechaent=new Date(document.getElementById('fec_ent').value);    
     var hoy= new Date();
     if (fechaini>fechaent){
         alert('la fecha inicial no puede ser mayor a la fecha de entrega');
@@ -388,38 +388,23 @@ function generar_Ord(){
      if (provedita==="Proveedor") {
      alert('El campo proveedor vacio');  
      
-    }else{
-      alert('Orden editada correctamente');    
-      return false;
     }
     
    
 }
-
-function buscarOrd(){
-    
-   var buscar=document.getElementById('buscarord').value;
-   
-     if (buscar==="Proveedor") {
-     alert('El campo proveedor vacio');  
-     return false;
-    }  0
-}
-
-
 
 
 function agrProd(){
     //campo id
- var idprod=document.getElementById('ID').value;
+ var idprod=document.getElementById('idprod').value;
     
      if (idprod==="") {
      alert('El campo ID se encuentra vacio');  
-    return false
+     return false
     }
     
      //campo nombre
- var nomprod=document.getElementById('nom').value;
+ var nomprod=document.getElementById('nomprod').value;
     
      if (nomprod==="") {
      alert('El campo nombre se encuentra vacio');  
@@ -427,7 +412,7 @@ function agrProd(){
     }
     
     //campo precio
- var precprod=document.getElementById('preciocom').value;
+ var precprod=document.getElementById('precprod').value;
     
      if (precprod==="") {
      alert('El campo precio se encuentra vacio');  
@@ -435,7 +420,7 @@ function agrProd(){
     }
     
     //campo precio venta
- var ventprod=document.getElementById('precioventa').value;
+ var ventprod=document.getElementById('ventprod').value;
     
      if (ventprod==="") {
      alert('El campo precio venta se encuentra vacio');  
@@ -449,90 +434,45 @@ function agrProd(){
      alert('El campo proveedor se encuentra vacio');  
      return false
     }
-    else{}
-    
-    alert('Producto agregado correctamente');  
-     return false
     
 }
 
 function editProd(){
     
      //campo nombre
- var nomedit=document.getElementById('nom_prod').value;
+ var nomedit=document.getElementById('nomedit').value;
     
      if (nomedit==="") {
      alert('El campo nombre se encuentra vacio');  
-     return false;
+     return false
     }
     
     //campo precio
- var precedit=document.getElementById('precio_com').value;
+ var precedit=document.getElementById('precedit').value;
     
      if (precedit==="") {
      alert('El campo precio se encuentra vacio');  
-     return false;
+     return false
     }
     
     //campo precio venta
- var ventaedit=document.getElementById('precio_ven').value;
+ var ventaedit=document.getElementById('ventaedit').value;
     
      if (ventaedit==="") {
      alert('El campo precio venta se encuentra vacio');  
-     return false;
+     return false
     }
     
      //campo proveedor
- var provedit=document.getElementById('prov').value;
+ var provedit=document.getElementById('provedit').value;
     
      if (provedit==="") {
      alert('El campo proveedor se encuentra vacio');  
-     return false;
-    }
-    
-    else{
-      alert('Producto modificado correctamente');  
-     return false;  
+     return false
     }
     
 }
 
-function nuevaCompra(){
-  var clave=document.getElementById('folioComp').value;
-    
-     if (clave==='') {
-     alert('El campo clave  se encuentra vacio');  
-     return false
-    } 
-    
-    var fecentedit=document.getElementById("fechacomp").value;
-    if ( fecentedit== null || fecentedit==0 ){
-        alert('No se ha indicado la fecha inicial');
-        return false;
-    } 
-    
-   
-    var fechaent=new Date(document.getElementById('fechacomp').value);    
-    var hoy= new Date();
-    if (fechaini>fechaent){
-        alert('la fecha inicial no puede ser mayor a la fecha de entrega');
-        document.getElementById('fechaini').value="";
-        return false;
-    }
-    
-    var pago=document.getElementById('totalp').value;
-    
-     if (pago==='') {
-     alert('El campo pago vacio');  
-     return false;
-    } 
-    
-    else{
-        alert('Proceso llevado correctamente');
-        return false;
-    }
-    
-}
 
 
 function listCompra(){
@@ -541,20 +481,9 @@ function listCompra(){
 alert('Debes seleccionar una opcion');
 return false;
 }
-}
-
-function Bucarprov(){
-   
-   if(!document.getElementById('opc1').checked && !document.getElementById('opc2').checked && !document.getElementById('opc3').checked && !document.getElementById('opc4').checked){
-alert('Debes seleccionar una opcion');
-return false;
-}
     
 }
     
-    //nuevo
-    
-
     
     
 

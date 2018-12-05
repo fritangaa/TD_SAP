@@ -1,0 +1,55 @@
+  /*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/03/2018, 10:29:36 AM
+    Author     : fgb, Fernanda
+*/
+
+*{ /*configuraciones globales de la pagina*/
+	margin:0;
+	padding:0;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+header{ /* espacio para el encabezado de la pagina*/
+	width:100%;
+        position: fixed;     
+}
+
+header nav{ /*ajustes para el tamaño de la barra de menu*/
+    font-family:Arial;  
+    padding: 0;
+	background:#3366FF;
+	z-index:1500;
+	width:100%;
+	margin:auto auto;
+
+}
+
+#sizq{
+	width:20%;
+	height:90%;
+	background-color:white;
+	float:left;
+	padding-bottom:10px;
+}
+
+#scent{
+	width:60%;
+	height:90%;
+	background-color:white;
+	float:left;
+}
+
+#sder{
+	width:20%;
+	height:90%;
+	background-color:white;
+	float:left;
+	padding:10px;
+}

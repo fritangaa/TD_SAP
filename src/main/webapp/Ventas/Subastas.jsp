@@ -16,9 +16,19 @@
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
-
     <!--Validacion de campos-->
     <script src="../Recursos/js/Inventario.js" type="text/javascript"></script>
+    <script>window.addEventListener("load", function() {
+  miformulario.codigo.addEventListener("keypress", soloNumeros, false);
+});
+
+//Solo permite introducir numeros.
+function soloNumeros(e){
+  var key = window.event ? e.which : e.keyCode;
+  if (key < 48 || key > 57) {
+    e.preventDefault();
+  }
+}</script>
 </head>
 <body>
     <header class="sticky-top">
@@ -144,8 +154,9 @@
                            out.println("<td>"+lista.get(i).getIva()+"</td>");
                            out.println("<td>"+lista.get(i).getCantidad()+"</td>");
                            out.println("<td>"
-                                   + "<form action=../BuscarPorIDProducto method=post >"
-                                   + "<input  name=clave id=clave type=text placeholder=Cantidad></td>");
+                                   + "<form name=miformulario>"
+                                   + "<input  name=clave id=clave type=number min=0 max=9 placeholder=Cantidad></td>"
+                                     + "</form>");
                            out.println("<td> "
                                    + "<input id=subastar type=button value=Subastar class=btn btn-success/><br>"
                                    + "</form>"
