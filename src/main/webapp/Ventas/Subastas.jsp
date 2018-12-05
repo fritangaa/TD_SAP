@@ -146,11 +146,11 @@ function soloNumeros(e){
                         {
                            out.println("<form name='miformulario' action='../SubastarArticulo'>"
                                    + "<tr>");                               
-                           out.println("<td> <input  name='idproducto' id=clave value='"+lista.get(i).getClave()+"' readonly></td>");
-                           out.println("<td> <input  name='desc' id=clave value='"+lista.get(i).getNombre()+"' readonly></td>");
+                           out.println("<td> <input  name='idproducto' size=4 id=clave value='"+lista.get(i).getClave()+"' readonly></td>");
+                           out.println("<td> <input  name='desc' size=11 id=clave value='"+lista.get(i).getNombre()+"' readonly></td>");
                            out.println("<td> "+lista.get(i).getTipo()+"</td>");
                            out.println("<td>"+lista.get(i).getUnidad()+"</td>");
-                           out.println("<td> <input  name='precio' id=clave value='"+lista.get(i).getCostounitario()+"' readonly></td>");
+                           out.println("<td> <input  name='precio' size=6 id=clave value='"+lista.get(i).getCostounitario()+"' readonly></td>");
                            out.println("<td>"+lista.get(i).getCostototal()+"</td>");
                            out.println("<td>"+lista.get(i).getIva()+"</td>");
                            out.println("<td>"+lista.get(i).getCantidad()+"</td>");
