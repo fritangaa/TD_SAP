@@ -58,16 +58,16 @@ public class BuscarSubasta extends HttpServlet {
             out.println("</tr>"
                     + "<form name='miformulario' action='../SubastarArticulo'>");
             out.println("<tr>");                               
-            out.println("<td>"+l.get(0)+"</td>");
-            out.println("<td>"+l.get(1)+"</td>");
+            out.println("<td><input  name='idproducto' id=clave value='"+l.get(0)+"' readonly></td>");
+            out.println("<td> <input  name='desc' id=clave value='"+l.get(1)+"' readonly></td>");
             out.println("<td>"+l.get(2)+"</td>");
             out.println("<td>"+l.get(3)+"</td>");
-            out.println("<td>"+l.get(4)+"</td>");
+            out.println("<td><input  name='precio' id=clave value='"+l.get(4)+"' readonly></td>");
             out.println("<td>"+l.get(5)+"</td>");
             out.println("<td>"+l.get(6)+"</td>");
             out.println("<td>"+l.get(7)+"</td>");
             out.println("<td>"
-                      + "<input  name=clave id=clave type=number min=0 max=9 placeholder=Cantidad></td>"
+                      + "<input  name='clave' id=clave type=number min=0 max=9 placeholder=Cantidad></td>"
                       + "</form>");
             out.println("<td> "
                       + "<input id=subastar type=button   value=Subastar class=btn btn-success/><br>"
