@@ -67,8 +67,7 @@ public class BuscarSubasta extends HttpServlet {
             out.println("<td>"+l.get(6)+"</td>");
             out.println("<td>"+l.get(7)+"</td>");
             out.println("<td>"
-                      + "<input  name='clave' id=clave type=number min=0 max=9 placeholder=Cantidad></td>"
-                      + "</form>");
+                      + "<input  name='clave' id=clave type=number min=0 max=9 placeholder=Cantidad></td>");
             out.println("<td> "
                       + "<input id=subastar type=button   value=Subastar class=btn btn-success/><br>"
                       + "</form>"
