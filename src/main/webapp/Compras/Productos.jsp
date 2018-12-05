@@ -124,77 +124,12 @@
                                             <th scope="col">Proovedor</th>
                                         </tr>
                                     </thead>                                    
-                                    <tbody>                                       
-                                        <tr id="modalInter">
-                                        <td scope="col">0001</td>
-                                            <td scope="col">Reloj</td>
-                                            <td scope="col">$100.00</td>
-                                            <td scope="col">$280.00</td>
-                                            <td scope="col">3</td>
-                                            <td scope="col">José</td>
-                                        </tr>  
-                                        <tr id="modalInter">
-                                        <td scope="col">0002</td>
-                                            <td scope="col">Coche</td>
-                                            <td scope="col">$10000.00</td>
-                                            <td scope="col">$15000.00</td>
-                                            <td scope="col">2</td>
-                                            <td scope="col">Luis</td>
+                                    <tbody>                  
                                         </tr>  
                                     </tbody>
                                 </table></div>
                         <br>
-                        
-                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                  
-                              <div class="container">
-                        <form action="" method="post" onsubmit="return agr_prov();">                
-                            
-                             <h5>Solo mostrar:</h5>
-                            <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1">
-                                    ID
-                            </label>
-                           </div>
-                           <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Nombre
-                            </label>
-                           </div>
-                           <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Precio Compra 
-                            </label>
-                           </div>
-                           <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                   Precio Venta
-                            </label>
-                           </div>
-                           <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                   Cantidad
-                            </label>
-                           </div>
-                          <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                   Proveedor
-                            </label>
-                           </div><br> 
-
-                                    <div><input type="submit" value="Filtrar" style="background-color:#3366FF" name="filtro" class="btn btn-primary"></div>
-                            </div>
-                            
-                            
-                        </form>
-                    </div> 
-                               
+                           
                                
                     </div>
                 </div>
