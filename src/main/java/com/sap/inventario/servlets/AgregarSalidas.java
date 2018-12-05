@@ -56,7 +56,7 @@ public class AgregarSalidas extends HttpServlet {
         //actualizar cantidad de productos
         c.actualizar(campos, "producto", "clave='"+clave+"'");
         //insertar en tabla detalle de orden de venta y de orden de venta
-        c.insertardemastablas(detallecampos,"detalle_ordendeventa", cantidad+",costounitario,costounitario*"+cant+",id from producto where clave='"+clave+"'");
+        c.insertardemastablas(detallecampos,"orden_de_venta", cantidad+",costounitario,costounitario*"+cant+",id from producto where clave='"+clave+"'");
         
         response.sendRedirect("Inventario/InventarioIngresarSalida.jsp");
     }

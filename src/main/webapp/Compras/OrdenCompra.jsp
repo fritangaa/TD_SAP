@@ -8,8 +8,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="../CSS/estilos.css" rel="stylesheet">
-        <script src="../JS/validaciones.js"></script>
+    <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+        <link href="../Recursos/Bootstrap/css/estilos.css" rel="stylesheet">
+        <script src="../js/validaciones.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../Recursos/Bootstrap/css/bootstrap.css" rel="stylesheet">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
@@ -19,55 +25,45 @@
         <title>Compras</title>
         
     </head>
-    
     <body>
-        
         <header class="sticky-top">
-            
-           <nav class="navbar navbar-expand-lg navbar-light barra">
-                <a href="#" class="navbar-brand text-white">Compras</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#compras_navbar" aria-controls="compras_navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Compras.jsp" style="color: white">Proveedores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Productos.jsp" style="color: white">Productos</a>
-                        </li>
-                        <li class="nav-item">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a href="Inventario.jsp" class="navbar-brand text-white">Compras</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#inv_navbar" aria-controls="inv_navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="int_navbar">
+                <ul class="navbar-nav mr-auto">
+                                    
+                    <li class="nav-item">
+                        <a href="Compras.jsp" class="nav-link text-white">Proveedores</a>
+                    </li>    
+                    <li class="nav-item">
+                        <a href="Productos.jsp" class="nav-link text-white">Productos</a>
+                    </li> 
+                    <li class="nav-item">
                             <a class="nav-link" href="OrdenCompra.jsp" style="color: white">Orden&nbsp;de&nbsp;compra</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="List_com.jsp" style="color: white">Lista&nbsp;de&nbsp;Compras</a>
-                        </li>                        
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item">
-                            <a class="nav-link" href="" style="color: white">Salir</a>
-                        </li>                                              
-                    </ul>
-                </div> 
-            </nav>           
-
-        </header>
-        
-        <div id="principal">
-            <div class="container-fluid">
-                 <div class="row">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                </div>
-                <div class="row">
-                    <div style="background-color:#F5F5F5;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-style-5"> <!-- Seccion izquierda -->
-                        <form method="POST" >
-                            <center><div id="titulo" class="col-12">
-                                <h3>Buscar&nbsp;Orden&nbsp;de&nbsp;Compra</h3>
-                                </div></center>
+                        </li>  
+                </ul>   
+               <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
+                    <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
+                </form>
+            </div>
+        </nav>
+    </header> 
+        <br>
+        <br>
+        <!--------BARRA-->
+    <div class="row">
+    <div class="col-sm-3">
+        <div class="card" text-center>
+              <form method="POST" >
+                            <center>
+                                <label>Buscar&nbsp;Orden&nbsp;de&nbsp;Compra</label>
+                                
                            <br>
                            <div class="radio">
                             <label>
@@ -81,44 +77,51 @@
                                     Por&nbsp;Folio
                             </label>
                            </div><br>
-                           <center><input type="text" name="rfcprov" placeholder="Folio" class="form-control" id="codprod" required></center>
+                           <input type="text" name="rfcprov" placeholder="Folio" class="form-control" id="codprod" required>
                             <div class="radio">
                             <label>
                                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                     Por&nbsp;Fecha
                             </label>
                            </div><br>
-                           <center><input type="date" name="rfcprov" placeholder="Fecha" class="form-control" id="codprod" required></center><div>
+                           <input type="date" name="rfcprov" placeholder="Fecha" class="form-control" id="codprod" required><div>
                                 <br>
                             </div>
-                            <center><input type="submit" value="Buscar" style="background-color:#3366FF" name="buscar" class="btn btn-primary"></center>
+                            <input type="submit" value="Buscar" style="background-color:#3366FF" name="buscar" class="btn btn-primary">
                             <br>
+                            </center>
                         </form>
-
-                        <form method="POST" action="Nuevo_orden.jsp"  >
-                            <div>
-                            <br>
-                            </div>
-                            <center><div id="titulo" class="col-12">
+            <hr>
+            
+         <form method="POST" action="Nuevo_orden.jsp"  >
+             <center>
+                            <div id="titulo" class="col-12">
                                 <h3>Orden de compra</h3>
-                                </div></center><br>
-                            <center><input type="submit" value="Agregar"  name="nuevo" class="btn btn-success"></center>      
+                                </div><br>
+                            <input type="submit" value="Agregar"  name="nuevo" class="btn btn-success">    
                              </form><div><br></div>
                             <form method="POST" action="Eli_orden.jsp" >                                
-                            <center><input type="submit" value="Eliminar"  name="eliminar" class="btn btn-success"></center>      
+                            <input type="submit" value="Eliminar"  name="eliminar" class="btn btn-success">      
                         </form><div><br></div>
                             <form method="POST" action="Edit_orden.jsp" >                                
-                            <center><input type="submit" value="Editar"  name="editar" class="btn btn-success"></center>      
+                            <input type="submit" value="Editar"  name="editar" class="btn btn-success">  
                         </form>
+</center>
                         <br>
-                    </div>   
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><!-- Seccion central --> 
-                        
+                    </div>         
+            </div>
+       
+        <!-- Seccion central --> 
+              <div class="col-sm-8">
+        <div class="card">
+            <div class="card-body">
+      <div class="col-xs-offset-6 col-md-offset-6 central">
                             <center><div>
                                     <h3>Ordenes de Compra</h3>
                             </div></center>
-                         <div class="table-responsive"><table class="table table-bordered">
+                         <div class="table-responsive">
+                             <form method="POST" action=".../Edit_orden.jsp">
+                             <table class="table table-bordered">
                                     <thead>
                                         <tr class="active">
                                             <th scope="col">Folio</th>
@@ -163,44 +166,15 @@
                                         </div></td>
                                         </tr> 
                                     </tbody>
-                                </table></div>
-                        <br>
-                        
-                           <div class="container">
-                        <form action="" method="post" onsubmit="return agr_prov();">                
-                           <div>
-                                    <h5>Solo mostrar:</h5>
-                            <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1">
-                                    Folio
-                            </label>
-                           </div>
-                           <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Fecha entrega
-                            </label>
-                           </div>
-                           <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Fecha orden 
-                            </label>
-                           </div>
-                          <br> 
-
-                                    <div><input type="submit" value="Filtrar" style="background-color:#3366FF" name="filtro" class="btn btn-primary"></div>
-                            </div> 
-                          
-                        </form>
-                    </div>
+                                    
+                                </table>
+                                 </form>
+                         </div>
                     </div>
                 </div>
             </div>            
-            
-        </div>
-         
+              </div>
+        
+          </div>
     </body>
 </html>
-
