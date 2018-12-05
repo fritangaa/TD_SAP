@@ -144,7 +144,7 @@ function soloNumeros(e){
                         LinkedList<Producto> lista =Consultas.consultaProducto();
                         for (int i=0;i<lista.size();i++)
                         {
-                           out.println("<form name=miformulario action=../SubastarArticulo>"
+                           out.println("<form name='miformulario' action='../SubastarArticulo'>"
                                    + "<tr>");                               
                            out.println("<td>"+lista.get(i).getClave()+"</td>");
                            out.println("<td>"+lista.get(i).getNombre()+"</td>");
