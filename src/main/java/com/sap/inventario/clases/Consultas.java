@@ -27,7 +27,7 @@ public class Consultas {
         conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
         Statement stmt;        
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from producto");
+        ResultSet rs = stmt.executeQuery("select * from producto ORDER BY tipo");
         while (rs.next()) {
             Producto p=new Producto();
             p.setClave(rs.getString("clave"));
