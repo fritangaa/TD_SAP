@@ -27,41 +27,66 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CompraMH", urlPatterns = {"/CompraMH"})
 public class CompraMH extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         Conexion c = new Conexion();
-        
+
         Date date = new Date();
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        
+
         //TransaccionService_Service ts = new TransaccionService_Service();
         //TransaccionService transaccion = ts.getTransaccionServicePort();
-        
-        
-        String fecha  = request.getParameter("fecha");
+        String fecha = request.getParameter("fecha");
         String direccion = request.getParameter("direccion");
         String cantidad = request.getParameter("cantidad");
         String precio = request.getParameter("precio");
         String desc = request.getParameter("desc");
         String idcliente = "101";
         String idprodicto = request.getParameter("idprodicto");
-        
-        String respuestaBanca="";
-        String respuestaMH="";
-        
-        
+
+        String respuestaBanca = "";
+        String respuestaMH = "";
+
         //respuestaBanca = transaccion.realizarTransaccion("4180222983523201", "512", "2020-12-21", "2004199733861120",precio, fecha, hourFormat.format(date));
         
         
         if (respuestaBanca.equals("TRANSACCION EXITOSA")) {
-            respuestaMH=("fecha,direccion,cantidad,desc,101,idprodicto");
+            respuestaMH = ("fecha,direccion,cantidad,desc,101,idprodicto");
             if (respuestaMH.equals("1")) {
+
+                String clave = idprodicto;
+                String nombre = "Martillo";
+                String tipo = "Herramineta";
+                String unidad = "caja" ;
+                String costounitario = precio;
+                String costov = String.valueOf(Integer.parseInt(precio)+(Integer.parseInt(precio)*.50));
+                String iva = "3";
+                //operacion de monto total
+
+                double vcosto = Double.parseDouble(costounitario);
+                double viva = Double.parseDouble(iva);
+                double monto = (vcosto * viva) + vcosto;
+                //Declaracion de campos de la base de datos
+                String campos = "clave,nombre,tipo,unidad,costounitario,precio_venta,iva,cantidad,monto_total";
+                //declaracion de variable que guarda los valores obtenidos en el jsp
+                String valores = "'" + clave + "',"
+                        + "'" + nombre + "',"
+                        + "'" + tipo + "',"
+                        + "'" + unidad + "',"
+                        + costounitario + ","
+                        + costov + ","
+                        + iva + ","
+                        + cantidad + ","
+                        + monto;
+
+                //insertar datos en la BD SAP
+                c.insertar(campos, "producto", valores);
+
                 request.getSession().setAttribute("resultado", "Compra realizada");
             }
         }
-        
+
         response.sendRedirect("Compras/OrdenCompra.jsp");
     }
 
