@@ -63,11 +63,11 @@ public class BuscarPorIDProducto extends HttpServlet {
             out.println("</tr>"
                     + "<form name='miformulario' action='../SubastarArticulo'>");
             out.println("<tr>");                               
-            out.println("<td><input  name='idproducto' id=clave value='"+l.get(0)+"' readonly></td>");
-            out.println("<td><input  name='desc' id=clave value='"+l.get(1)+"' readonly></td>");
+            out.println("<td><input  name='idproducto' size=4 id=clave value='"+l.get(0)+"' readonly></td>");
+            out.println("<td><input  name='desc' size=11 id=clave value='"+l.get(1)+"' readonly></td>");
             out.println("<td>"+l.get(2)+"</td>");
             out.println("<td>"+l.get(3)+"</td>");
-            out.println("<td><input  name='precio' id=clave value='"+l.get(4)+"' readonly></td>");
+            out.println("<td><input  name='precio' size=6 id=clave value='"+l.get(4)+"' readonly></td>");
             out.println("<td>"+l.get(5)+"</td>");
             out.println("<td>"+l.get(6)+"</td>");
             out.println("<td>"+l.get(7)+"</td>");
