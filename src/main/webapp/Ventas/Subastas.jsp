@@ -86,7 +86,7 @@ function soloNumeros(e){
                   <!---BARRA DE LA DERECHA---------------------------------------------------------->
                 </div>
                     <div class="col-xs-10 col-md-10 central">
-                        <form action="../BuscarPorIDProducto" method="post" >
+                        <form action="../BuscarSubasta" method="post" >
                         <h5>Buscar ID de producto</h5>
                         <input  name="clave" id="clave" type="text" placeholder="ID producto"/><br><br> 
                 <input id="buscar" type="button" value="Buscar" class="btn btn-success"/><br><br>
@@ -116,7 +116,7 @@ function soloNumeros(e){
           Nombre Producto
         </th>
         <th>
-          tipo
+          Tipo
         </th>
         <th>
           Unidad
@@ -128,7 +128,7 @@ function soloNumeros(e){
           Costo de venta
         </th>
         <th>
-          iva 
+          Iva 
         </th>
       <th>
           Cantidad Disponible
