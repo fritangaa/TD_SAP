@@ -155,8 +155,7 @@ function soloNumeros(e){
                            out.println("<td>"+lista.get(i).getIva()+"</td>");
                            out.println("<td>"+lista.get(i).getCantidad()+"</td>");
                            out.println("<td>"
-                                   + "<input  name='clave' id=clave type=number min=0 max=9 placeholder=Cantidad></td>"
-                                     + "</form>");
+                                   + "<input  name='clave' id=clave type=number min=0 max=9 placeholder=Cantidad required></td>");
                            out.println("<td> "
                                    + "<input id=subastar type=button   value=Subastar class=btn btn-success/><br>"
                                    + "</form>"
