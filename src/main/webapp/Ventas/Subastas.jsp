@@ -121,10 +121,10 @@
           iva 
         </th>
       <th>
-          Cantidad
+          Cantidad Disponible
         </th>
-       <th>
-          Monto Total
+        <th>
+          Cantidad a Subastar
         </th>
         <th>
           Subastar
@@ -143,9 +143,10 @@
                            out.println("<td>"+lista.get(i).getCostototal()+"</td>");
                            out.println("<td>"+lista.get(i).getIva()+"</td>");
                            out.println("<td>"+lista.get(i).getCantidad()+"</td>");
-                           out.println("<td>"+lista.get(i).getMontototal()+"</td>");
-                           out.println("<td> "
+                           out.println("<td>"
                                    + "<form action=../BuscarPorIDProducto method=post >"
+                                   + "<input  name=clave id=clave type=text placeholder=Cantidad></td>");
+                           out.println("<td> "
                                    + "<input id=subastar type=button value=Subastar class=btn btn-success/><br>"
                                    + "</form>"
                                    + "<br>"
